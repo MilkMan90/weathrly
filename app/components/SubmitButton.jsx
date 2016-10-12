@@ -2,7 +2,7 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 
 class SubmitButton extends React.Component {
-  render () {
+  render() {
     return (
       <button className="SubmitButton" onClick={this.props.handleClick}>
         <span>{this.props.text}</span>

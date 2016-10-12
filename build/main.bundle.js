@@ -413,6 +413,9 @@
 	var React = __webpack_require__(6);
 	var ReactDOM = __webpack_require__(39);
 	var LikesCounter = __webpack_require__(177);
+	var SubmitButton = __webpack_require__(179);
+	var UserInputField = __webpack_require__(180);
+	var LocationInput = __webpack_require__(181);
 
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -426,7 +429,11 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(LikesCounter, { initialCount: 0 });
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(SubmitButton, { text: 'Submit Location' })
+	      );
 	    }
 	  }]);
 
@@ -21944,6 +21951,148 @@
 	}(React.Component);
 
 	module.exports = ActionButton;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(6);
+	var ReactDOM = __webpack_require__(39);
+
+	var SubmitButton = function (_React$Component) {
+	  _inherits(SubmitButton, _React$Component);
+
+	  function SubmitButton() {
+	    _classCallCheck(this, SubmitButton);
+
+	    return _possibleConstructorReturn(this, (SubmitButton.__proto__ || Object.getPrototypeOf(SubmitButton)).apply(this, arguments));
+	  }
+
+	  _createClass(SubmitButton, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'button',
+	        { className: 'SubmitButton', onClick: this.props.handleClick },
+	        React.createElement(
+	          'span',
+	          null,
+	          this.props.text
+	        )
+	      );
+	    }
+	  }]);
+
+	  return SubmitButton;
+	}(React.Component);
+
+	module.exports = SubmitButton;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(6);
+	var ReactDOM = __webpack_require__(39);
+
+	var UserInputField = function (_React$Component) {
+	  _inherits(UserInputField, _React$Component);
+
+	  function UserInputField() {
+	    _classCallCheck(this, UserInputField);
+
+	    return _possibleConstructorReturn(this, (UserInputField.__proto__ || Object.getPrototypeOf(UserInputField)).apply(this, arguments));
+	  }
+
+	  _createClass(UserInputField, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement('input', { className: 'UserInputField', id: this.props.id, type: 'text', placeholder: this.props.text, onClick: this.props.handleClick });
+	    }
+	  }]);
+
+	  return UserInputField;
+	}(React.Component);
+
+	module.exports = UserInputField;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(6);
+	var ReactDOM = __webpack_require__(39);
+	var SubmitButton = __webpack_require__(179);
+	var UserInputField = __webpack_require__(180);
+
+	var LocationInput = function (_React$Component) {
+	  _inherits(LocationInput, _React$Component);
+
+	  function LocationInput(props) {
+	    _classCallCheck(this, LocationInput);
+
+	    var _this = _possibleConstructorReturn(this, (LocationInput.__proto__ || Object.getPrototypeOf(LocationInput)).call(this, props));
+
+	    _this.state = {
+	      location: props.initialLocation,
+	      city: props.initialCity,
+	      state: props.initialState,
+	      zip: props.intialZip
+	    };
+	    return _this;
+	  }
+
+	  _createClass(LocationInput, [{
+	    key: 'updateState',
+	    value: function updateState() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(UserInputField, { id: 'city', text: 'City', onChange: this.updateState }),
+	        React.createElement(UserInputField, { id: 'state', text: 'State', onChange: this.updateState }),
+	        React.createElement(UserInputField, { id: 'zip', text: 'Zip', onChange: this.updateState }),
+	        React.createElement(SubmitButton, null)
+	      );
+	    }
+	  }]);
+
+	  return LocationInput;
+	}(React.Component);
+
+	module.exports = LocationInput;
 
 /***/ }
 /******/ ]);
