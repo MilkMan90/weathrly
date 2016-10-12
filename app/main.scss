@@ -14,11 +14,15 @@ body {
   @include light-font;
 }
 
-h3 {
-    position: relative;
-    top: 50px;
+h1 {
     font-weight: 100;
-    font-size: 30px;
+    font-size: 35px;
+    text-align: center;
+}
+
+h3 {
+    font-weight: 100;
+    font-size: 20px;
     color: #5a5959;
     text-align: center;
 }
@@ -39,6 +43,9 @@ button {
     }
 }
 
+#input-fields{
+  text-align: center;
+}
 .LikesCounter {
   height: 300px;
   width: 300px;

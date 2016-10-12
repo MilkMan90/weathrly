@@ -1,12 +1,10 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 
-class UserInputField extends React.Component {
-  render () {
+const UserInputField = ({inputFieldId, text, value, handleChange}) => {
     return (
-      <input className="UserInputField" type='text' placeholder={this.props.text} onClick={this.props.handleClick}/>
+      <input className="UserInputField" id={inputFieldId} value={value} type="text" placeholder={text} onChange={handleChange}/>
     )
-  }
 }
 
 module.exports = UserInputField
