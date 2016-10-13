@@ -6,7 +6,6 @@ $faded-background: rgba(255,255,255,0.4);
   font-family: helvetica, sans-serif;
   font-weight: 100;
   letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
 body {
@@ -56,6 +55,11 @@ button {
 .ActionButtons {
   width: 240px;
   margin: 100px auto 0 auto;
+}
+
+.location{
+  text-align: center;
+  margin: 20px;
 }
 
 .single-day{

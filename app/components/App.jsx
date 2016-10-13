@@ -64,7 +64,9 @@ class App extends React.Component {
     }
 
     return (
-      <div>
+      <div className='container'>
+        <h1>Its Weather Time</h1>
+        <h3>Enter Your Location</h3>
         <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
         {invalidInputError}
         {errorMessage}

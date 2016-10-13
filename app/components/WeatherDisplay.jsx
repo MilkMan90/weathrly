@@ -11,7 +11,10 @@ class WeatherDisplay extends React.Component {
   render() {
     return (
       <div id='weather-box'>
-        <div id='current-weather'>
+        <div className='location'>
+          Location: {this.props.weather.current_observation.display_location.full}
+        </div>
+        <div className='current-weather'>
           It's {this.props.weather.current_observation.weather} outside and the temperature is {this.props.weather.current_observation.temp_f} degrees.
         </div>
 
