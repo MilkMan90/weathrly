@@ -35,7 +35,7 @@ class App extends React.Component {
           this.callZipAPI()
           break;
         case 'citystate':
-          this.callcityAPI()
+          this.callCityAPI()
           break;
       }
     }
@@ -52,7 +52,7 @@ class App extends React.Component {
     }.bind(this));
   }
   callZipAPI() {
-    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip + '.json'
+    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip +'.json'
     console.log(url)
     $.get(url, function(data) {
       console.log(data)
@@ -63,7 +63,8 @@ class App extends React.Component {
     }.bind(this));
   }
   callCityAPI() {
-    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
+    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/'+this.state.state+'/'+this.state.city+'.json'
+    console.log(url)
     $.get(url, function(data) {
       console.log(data)
       this.setState({

@@ -46,28 +46,42 @@ class LocationInput extends React.Component {
     })
   }
   checkValidInput() {
-    //check city
-    // var cityValid = true;
-    // var stateValid = false;
 
-    var zipValid = false;
-    // if (this.state.city.match(/^\d+$/)) {
-    //   cityValid = true;
-    // } else {
-    //   cityValid = false
+     if(this.state.zip !== ''){
+       let isOnlyNumbers = new RegExp(/^\d+$/)
+       if((this.state.zip.length === 5) &&        isOnlyNumbers.test(this.state.zip)
+        ){
+          return true
+        } else {
+          return false
+        }
+     } else if(this.state.city !== '' && this.state.state !==''){
+
+       let isOnlyChar = new RegExp(/^[A-Za-z\s]+$/)
+       if(isOnlyChar.test(this.state.city) && isOnlyChar.test(this.state.state)){
+         return true
+       } else {
+         return false
+       }
+     }
+
+    // // if (this.state.city.match(/^\d+$/)) {
+    // //   cityValid = true;
+    // // } else {
+    // //   cityValid = false
+    // // }
+    // // //check state
+    // // if (STATES.includes(this.state.state)){
+    // //   stateValid = true
+    // // }else {
+    // //   stateValid = false;
+    // // }
+    // //check zip
+    // if(this.state.zip.length === 5 && !(this.state.city.match(/^\d+$/))) {
+    //   zipValid = true;
     // }
-    // //check state
-    // if (STATES.includes(this.state.state)){
-    //   stateValid = true
-    // }else {
-    //   stateValid = false;
-    // }
-    //check zip
-    if(this.state.zip.length === 5 && !(this.state.city.match(/^\d+$/))) {
-      zipValid = true;
-    }
-    // return (cityValid && stateValid && zipValid)
-    return zipValid;
+    // // return (cityValid && stateValid && zipValid)
+    // return zipValid;
   }
   render() {
     return (
