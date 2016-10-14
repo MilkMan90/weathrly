@@ -16,20 +16,26 @@ class LocationInput extends React.Component {
     this.state = {
       city: '',
       state: '',
-      zip: ''
+      zip: '',
+      apiType: 'zip'
     };
   }
   updateState(e) {
     let {placeholder, value} = e.target;
     placeholder = placeholder.toLowerCase();
     value = value.toLowerCase();
-    this.setState({[placeholder]: value});
+    this.setState({[placeholder]: value},()=>{
+      if(this.state.city !== '' || this.state.state !== ''){
+        this.setState({zip:'', apiType: 'citystate'})
+      } else if(this.state.zip !== ''){
+        this.setState({state:'', city:'', apiType:'zip'})
+      }});
   }
   submitLocation(e) {
     e.preventDefault();
     console.log(this.checkValidInput())
     if(this.checkValidInput()){
-      this.props.getLocation(this.state, 'zip');
+      this.props.getLocation(this.state);
     }else{
       this.props.invalidInput();
     };

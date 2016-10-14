@@ -42,7 +42,6 @@ class App extends React.Component {
     );
   }
   callipAPI (){
-    // var url = 'http://weatherly-api.herokuapp.com/api/weather'
     var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
     $.get(url, function(data) {
       console.log(data)
@@ -64,7 +63,14 @@ class App extends React.Component {
     }.bind(this));
   }
   callCityAPI() {
-
+    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
+    $.get(url, function(data) {
+      console.log(data)
+      this.setState({
+        data:data,
+        zip:data.current_observation.display_location.zip
+      },() =>{this.saveLocation()})
+    }.bind(this));
   }
   invalidInput() {
     this.setState({
