@@ -1,12 +1,11 @@
 $main-background: #cec2c2;
-$button-background: #982292;
+$button-background: #934592;
 $faded-background: rgba(255,255,255,0.4);
 
 @mixin light-font {
   font-family: helvetica, sans-serif;
   font-weight: 100;
   letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
 body {
@@ -35,12 +34,23 @@ button {
     background: $button-background;
     color: white;
     margin: 10px;
-    width: 100px;
+
     @include light-font;
     &:hover {
       background: darken($button-background, 20);
       cursor: pointer;
     }
+}
+
+.button {
+  padding: 20px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  background: $button-background;
+  color: white;
+  margin: 10px;
+  width: 160px;
 }
 
 #input-fields{
@@ -58,6 +68,11 @@ button {
   margin: 100px auto 0 auto;
 }
 
+.location{
+  text-align: center;
+  margin: 20px;
+}
+
 .single-day{
   border: 2px solid black;
   margin: 15px;
@@ -69,6 +84,11 @@ button {
 }
 
 .details{
-  text-align: center;
   margin: 5px;
+  .daily-image{
+    margin: 5px;
+  }
+  span{
+    margin-left: 10px;
+  }
 }

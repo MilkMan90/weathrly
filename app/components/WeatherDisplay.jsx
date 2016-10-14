@@ -9,12 +9,24 @@ class WeatherDisplay extends React.Component {
     };
   }
   render() {
+    let alert;
+
+    if(this.props.weather.alerts.length > 0){
+       alert = '{this.props.weather.alerts}'
+    } else {
+      alert = ''
+    }
     return (
       <div id='weather-box'>
-        <div id='current-weather'>
-          It's {this.props.weather.current_observation.weather} outside and the temperature is {this.props.weather.current_observation.temp_f} degrees.
+        <div className='location'>
+          Location: {this.props.weather.current_observation.display_location.full}
         </div>
-
+        <div className='alerts'>
+          {alert}
+        </div>
+        <div className='current-weather'>
+          It is {this.props.weather.current_observation.weather} outside and the temperature is {this.props.weather.current_observation.temp_f} degrees.
+        </div>
          <SingleDay day='Today' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[0]}/>
          <SingleDay day='Tomorrow' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[1]}/>
          <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[2].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[2]}/>
@@ -22,7 +34,7 @@ class WeatherDisplay extends React.Component {
          <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[4].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[4]}/>
          <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[5].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[5]}/>
          <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[6].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[6]}/>
-      </div>
+          </div>
     )
   }
 

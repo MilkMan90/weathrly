@@ -19,20 +19,47 @@ class App extends React.Component {
       invalidInput: false
     };
   }
-  setLocation({city, state, zip}) {
+  setLocation({city, state, zip, apiType}) {
     this.setState({
       city: city,
       state: state,
       zip: zip,
       invalidInput: false
-    }, () => {this.callZipAPI()});
+    }, () => {
+      switch(apiType){
+        case 'ip':
+          this.callipAPI()
+          break;
+        case 'zip':
+          console.log('suh dude')
+          this.callZipAPI()
+          break;
+        case 'citystate':
+          this.callcityAPI()
+          break;
+      }
+    }
+    );
+  }
+  callipAPI (){
+    // var url = 'http://weatherly-api.herokuapp.com/api/weather'
+    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
+    $.get(url, function(data) {
+      console.log(data)
+      this.setState({
+        data:data,
+        zip:data.current_observation.display_location.zip
+      },() =>{this.saveLocation()})
+    }.bind(this));
   }
   callZipAPI() {
-    console.log(this.props.url)
     var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip + '.json'
     console.log(url)
     $.get(url, function(data) {
-      this.setState({data:data})
+      console.log(data)
+      this.setState({
+        data:data,
+      },() =>{this.saveLocation()})
       console.log(data);
     }.bind(this));
   }
@@ -44,10 +71,29 @@ class App extends React.Component {
       invalidInput: true
     })
   }
+  saveLocation () {
+    var storedLocation = {
+      city: this.state.city,
+      state: this.state.state,
+      zip: this.state.zip,
+      apiType: 'zip'
+    }
+    localStorage.setItem('savedLocation', JSON.stringify(storedLocation))
+  }
+  retrieveLocation () {
+    return JSON.parse(localStorage.getItem('savedLocation'))
+  }
+  componentDidMount () {
+    let retrievedLocation = this.retrieveLocation();
+    if(retrievedLocation!= null){
+      this.setLocation(retrievedLocation)
+    }
+  }
   render () {
     let errorMessage;
     let invalidInputError;
     let weatherDisplay;
+    let weatherStyle;
     // if(true) {
     //   errorMessage = (<div>WOOT</div>)
     // }
@@ -64,8 +110,11 @@ class App extends React.Component {
     }
 
     return (
-      <div>
+      <div className='container' className={weatherStyle}>
+        <h1>Its Weather Time</h1>
+        <h3>Enter a Location</h3>
         <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
+        <input className='button' type='submit' value='Get Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
         {invalidInputError}
         {errorMessage}
         {weatherDisplay}

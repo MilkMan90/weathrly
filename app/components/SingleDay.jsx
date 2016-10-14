@@ -14,7 +14,9 @@ class SingleDay extends React.Component {
           The forecast for {this.props.day} is:
         </div>
         <div className='details'>
-          Conditions: {this.props.dailyForecast.conditions} The high is { this.props.dailyForecast.high.fahrenheit} and the low is { this.props.dailyForecast.low.fahrenheit}
+          <img className='daily-image' src={this.props.dailyForecast.icon_url} alt={this.props.dailyForecast.icon}></img>
+          <span>Conditions: {this.props.dailyForecast.conditions}</span>
+          <p>The high is { this.props.dailyForecast.high.fahrenheit} and the low is { this.props.dailyForecast.low.fahrenheit}</p>
         </div>
       </div>
     )
