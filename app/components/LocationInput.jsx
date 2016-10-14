@@ -29,10 +29,15 @@ class LocationInput extends React.Component {
     e.preventDefault();
     console.log(this.checkValidInput())
     if(this.checkValidInput()){
-      this.props.getLocation(this.state);
+      this.props.getLocation(this.state, 'zip');
     }else{
       this.props.invalidInput();
     };
+    this.setState({//clear input fields
+      city: '',
+      state: '',
+      zip: ''
+    })
   }
   checkValidInput() {
     //check city
@@ -69,7 +74,7 @@ class LocationInput extends React.Component {
 
         <UserInputField inputFieldId="zip" text="Zip" value={this.state.zip} handleChange={this.updateState.bind(this)}/>
 
-        <input type='submit' onClick={ (e) => this.submitLocation(e)} />
+        <input className='button' type='submit' onClick={ (e) => this.submitLocation(e)} />
 
       </div>
     )

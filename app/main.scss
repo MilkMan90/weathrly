@@ -1,5 +1,5 @@
 $main-background: #cec2c2;
-$button-background: #982292;
+$button-background: #934592;
 $faded-background: rgba(255,255,255,0.4);
 
 @mixin light-font {
@@ -34,12 +34,23 @@ button {
     background: $button-background;
     color: white;
     margin: 10px;
-    width: 100px;
+
     @include light-font;
     &:hover {
       background: darken($button-background, 20);
       cursor: pointer;
     }
+}
+
+.button {
+  padding: 20px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  background: $button-background;
+  color: white;
+  margin: 10px;
+  width: 160px;
 }
 
 #input-fields{
@@ -73,6 +84,11 @@ button {
 }
 
 .details{
-  text-align: center;
   margin: 5px;
+  .daily-image{
+    margin: 5px;
+  }
+  span{
+    margin-left: 10px;
+  }
 }
