@@ -111,20 +111,25 @@ class App extends React.Component {
     }
 
     if (this.state.data){
-      weatherDisplay = (<WeatherDisplay weather={this.state.data}/>)
+      weatherDisplay = (<WeatherDisplay className='weather' weather={this.state.data}/>)
     } else {
       weatherDisplay = '';
     }
 
     return (
-      <div className='container' className={weatherStyle}>
-        <h1>Its Weather Time</h1>
-        <h3>Enter a Location</h3>
-        <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
-        <input className='button' type='submit' value='Get Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
-        {invalidInputError}
-        {errorMessage}
-        {weatherDisplay}
+      <div className='app'>
+          <div className='banner'>
+          </div>
+          <header>
+            <h1>Its Weather Time</h1>
+            <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
+            <input className='button' type='submit' value='Get Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
+          </header>
+          <main>
+          {invalidInputError}
+          {errorMessage}
+          {weatherDisplay}
+          </main>
       </div>
     )
   }
