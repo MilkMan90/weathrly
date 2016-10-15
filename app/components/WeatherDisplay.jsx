@@ -6,7 +6,8 @@ class WeatherDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hourlyForecastArray: ['']
+      hourlyForecastArray: [''],
+      showAlert: false
     };
   }
   componentWillMount () {
@@ -28,24 +29,45 @@ class WeatherDisplay extends React.Component {
       hourlyForecastArray: tempForecastArray
     })
   }
+  showAlert(){
+    if(this.state.showAlert === false){
+      this.setState({
+        showAlert: true
+      })
+    } else {
+      this.setState({
+        showAlert: false
+      })
+    }
+  }
   render() {
     let alert;
 
     if(this.props.weather.alerts.length > 0){
-       alert = (<div className='alerts'>{this.props.weather.alerts[0].message}</div>)
+      if(this.state.showAlert === true){
+        alert = (<div className='alerts'>{this.props.weather.alerts[0].message}</div>)
+      } else {
+        alert = (<div className='show-alert'>Click to Show Alert</div>)
+      }
     } else {
       alert = ''
     }
+
     return (
       <div id='weather-box'>
         <div className='location'>
-          Location: {this.props.weather.current_observation.display_location.full}
+          <strong>Location:</strong> {this.props.weather.current_observation.display_location.full}
         </div>
-        <div className='alerts'>
+        <div className='alerts' onClick={this.showAlert.bind(this)}>
           {alert}
         </div>
         <div className='current-weather'>
-          Currently, it is {this.props.weather.current_observation.weather} outside and the temperature is {this.props.weather.current_observation.temp_f} degrees.
+          <div className = 'current-weather-header'>Now</div>
+            <img className='daily-image' src={this.props.weather.current_observation.icon_url} alt={this.props.weather.current_observation.icon}></img>
+          <p>
+          <p className = 'cur-weather'>
+          {this.props.weather.current_observation.weather}</p> <p className = 'cur-temp'>{this.props.weather.current_observation.temp_f}&deg; </p>
+          </p>
         </div>
          <SingleDay day='Today' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[0]} hourlyArray = {this.state.hourlyForecastArray[0]}/>
          <SingleDay day='Tomorrow' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[1]} hourlyArray = {this.state.hourlyForecastArray[1]}/>

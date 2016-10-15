@@ -40,7 +40,7 @@ class SingleDay extends React.Component {
         <div className='details'>
           <img className='daily-image' src={this.props.dailyForecast.icon_url} alt={this.props.dailyForecast.icon}></img>
           <span>Conditions: {this.props.dailyForecast.conditions}</span>
-          <p>The high is { this.props.dailyForecast.high.fahrenheit} and the low is { this.props.dailyForecast.low.fahrenheit}</p>
+          <p>The high is { this.props.dailyForecast.high.fahrenheit}&deg; and the low is { this.props.dailyForecast.low.fahrenheit}&deg;</p>
         </div>
         <div className = 'hourly'>
           {hourlyForecast}
