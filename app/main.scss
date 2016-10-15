@@ -150,3 +150,28 @@ main{
     margin-left: 10px;
   }
 }
+
+.all-hours{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+}
+.each-hour{
+  border: 1px solid teal;
+  width: 120px;
+  padding: 5px;
+  margin: 5px;
+  .hour-label{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px teal solid;
+  }
+  .hourly-temp{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: complement(teal);
+  }
+}

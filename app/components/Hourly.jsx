@@ -16,7 +16,7 @@ const HourlyForecast = (hourlyForecast) => {
     hours.push(PerHour(hour))
   });
   return(
-    <div>
+    <div className='all-hours'>
       {hours}
     </div>
   )
@@ -24,8 +24,9 @@ const HourlyForecast = (hourlyForecast) => {
 
 const PerHour = (hour) =>{
   return(
-    <span className = 'each-hour'>
-       {hour.FCTTIME.civil}- {hour.temp.english} --
+    <span key={hour.FCTTIME.hour} className = 'each-hour'>
+       <div className= "hour-label">{hour.FCTTIME.civil}</div>
+       <div className= "hourly-temp">{hour.temp.english}&deg;</div>
     </span>
   )
 }
