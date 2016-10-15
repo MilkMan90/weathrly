@@ -7,7 +7,6 @@ const UserInputField = require('./UserInputField')
 const LocationInput = require('./LocationInput')
 const WeatherDisplay = require('./WeatherDisplay')
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
