@@ -84,7 +84,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background: #cec2c2;\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px;\n  text-transform: uppercase; }\n\nh1 {\n  font-weight: 100;\n  font-size: 35px;\n  text-align: center; }\n\nh3 {\n  font-weight: 100;\n  font-size: 20px;\n  color: #5a5959;\n  text-align: center; }\n\nbutton {\n  padding: 20px;\n  border-radius: 2px;\n  outline: none;\n  border: none;\n  background: #982292;\n  color: white;\n  margin: 10px;\n  width: 100px;\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px;\n  text-transform: uppercase; }\n  button:hover {\n    background: #450f42;\n    cursor: pointer; }\n\n#input-fields {\n  text-align: center; }\n\n.LikesCounter {\n  height: 300px;\n  width: 300px;\n  margin: 78px auto;\n  background: rgba(255, 255, 255, 0.4); }\n\n.ActionButtons {\n  width: 240px;\n  margin: 100px auto 0 auto; }\n\n.single-day {\n  border: 2px solid black; }\n", ""]);
+	exports.push([module.id, "body {\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n\nh1 {\n  font-weight: 100;\n  font-size: 35px;\n  text-align: center; }\n\nh3 {\n  font-weight: 100;\n  font-size: 20px;\n  color: #5a5959;\n  text-align: center; }\n\nbutton {\n  padding: 20px;\n  border-radius: 2px;\n  outline: none;\n  border: none;\n  background: #934592;\n  color: white;\n  margin: 10px;\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n  button:hover {\n    background: #4e244d;\n    cursor: pointer; }\n\n.bg {\n  position: fixed;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  display: block;\n  background-image: url(\"/images/snowy.jpg\");\n  width: 1200px;\n  height: 800px;\n  -webkit-filter: blur(5px);\n  -moz-filter: blur(5px);\n  -o-filter: blur(5px);\n  -ms-filter: blur(5px);\n  filter: blur(5px); }\n\n.content {\n  position: fixed;\n  left: 0;\n  right: 0;\n  z-index: 9999;\n  margin-left: 20px;\n  margin-right: 20px; }\n\n.button {\n  padding: 20px;\n  border-radius: 2px;\n  outline: none;\n  border: none;\n  background: #934592;\n  color: white;\n  margin: 10px;\n  width: 160px; }\n\n#input-fields {\n  text-align: center; }\n\n.LikesCounter {\n  height: 300px;\n  width: 300px;\n  margin: 78px auto;\n  background: rgba(255, 255, 255, 0.4); }\n\n.ActionButtons {\n  width: 240px;\n  margin: 100px auto 0 auto; }\n\n.location {\n  text-align: center;\n  margin: 20px; }\n\n.single-day {\n  border: 2px solid black;\n  margin: 15px; }\n\n.day {\n  border-bottom: 1px dashed purple;\n  margin: 5px; }\n\n.details {\n  margin: 5px; }\n  .details .daily-image {\n    margin: 5px; }\n  .details span {\n    margin-left: 10px; }\n", ""]);
 
 	// exports
 
@@ -404,6 +404,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -445,6 +447,7 @@
 	      var city = _ref.city;
 	      var state = _ref.state;
 	      var zip = _ref.zip;
+	      var apiType = _ref.apiType;
 
 	      this.setState({
 	        city: city,
@@ -452,23 +455,70 @@
 	        zip: zip,
 	        invalidInput: false
 	      }, function () {
-	        _this2.callZipAPI();
+	        switch (apiType) {
+	          case 'ip':
+	            _this2.callipAPI();
+	            break;
+	          case 'zip':
+	            console.log('suh dude');
+	            _this2.callZipAPI();
+	            break;
+	          case 'citystate':
+	            _this2.callCityAPI();
+	            break;
+	        }
 	      });
+	    }
+	  }, {
+	    key: 'callipAPI',
+	    value: function callipAPI() {
+	      var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json';
+	      $.get(url, function (data) {
+	        var _this3 = this;
+
+	        console.log(data);
+	        this.setState({
+	          data: data,
+	          zip: data.current_observation.display_location.zip
+	        }, function () {
+	          _this3.saveLocation();
+	        });
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'callZipAPI',
 	    value: function callZipAPI() {
-	      console.log(this.props.url);
 	      var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip + '.json';
 	      console.log(url);
 	      $.get(url, function (data) {
-	        this.setState({ data: data });
+	        var _this4 = this;
+
+	        console.log(data);
+	        this.setState({
+	          data: data
+	        }, function () {
+	          _this4.saveLocation();
+	        });
 	        console.log(data);
 	      }.bind(this));
 	    }
 	  }, {
 	    key: 'callCityAPI',
-	    value: function callCityAPI() {}
+	    value: function callCityAPI() {
+	      var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.state + '/' + this.state.city + '.json';
+	      console.log(url);
+	      $.get(url, function (data) {
+	        var _this5 = this;
+
+	        console.log(data);
+	        this.setState({
+	          data: data,
+	          zip: data.current_observation.display_location.zip
+	        }, function () {
+	          _this5.saveLocation();
+	        });
+	      }.bind(this));
+	    }
 	  }, {
 	    key: 'invalidInput',
 	    value: function invalidInput() {
@@ -477,11 +527,38 @@
 	      });
 	    }
 	  }, {
+	    key: 'saveLocation',
+	    value: function saveLocation() {
+	      var storedLocation = {
+	        city: this.state.city,
+	        state: this.state.state,
+	        zip: this.state.zip,
+	        apiType: 'zip'
+	      };
+	      localStorage.setItem('savedLocation', JSON.stringify(storedLocation));
+	    }
+	  }, {
+	    key: 'retrieveLocation',
+	    value: function retrieveLocation() {
+	      return JSON.parse(localStorage.getItem('savedLocation'));
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var retrievedLocation = this.retrieveLocation();
+	      if (retrievedLocation != null) {
+	        this.setLocation(retrievedLocation);
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this6 = this;
+
 	      var errorMessage = void 0;
 	      var invalidInputError = void 0;
 	      var weatherDisplay = void 0;
+	      var weatherStyle = void 0;
 	      // if(true) {
 	      //   errorMessage = (<div>WOOT</div>)
 	      // }
@@ -503,11 +580,29 @@
 
 	      return React.createElement(
 	        'div',
-	        null,
-	        React.createElement(LocationInput, { getLocation: this.setLocation.bind(this), invalidInput: this.invalidInput.bind(this) }),
-	        invalidInputError,
-	        errorMessage,
-	        weatherDisplay
+	        { className: 'container' },
+	        React.createElement('div', _defineProperty({ className: 'bg' }, 'className', weatherStyle)),
+	        React.createElement(
+	          'div',
+	          { className: 'content' },
+	          React.createElement(
+	            'h1',
+	            null,
+	            'Its Weather Time'
+	          ),
+	          React.createElement(
+	            'h3',
+	            null,
+	            'Enter a Location'
+	          ),
+	          React.createElement(LocationInput, { getLocation: this.setLocation.bind(this), invalidInput: this.invalidInput.bind(this) }),
+	          React.createElement('input', { className: 'button', type: 'submit', value: 'Get Current Location', onClick: function onClick() {
+	              return _this6.setLocation({ apiType: 'ip' });
+	            } }),
+	          invalidInputError,
+	          errorMessage,
+	          weatherDisplay
+	        )
 	      );
 	    }
 	  }]);
@@ -23795,7 +23890,8 @@
 	    _this.state = {
 	      city: '',
 	      state: '',
-	      zip: ''
+	      zip: '',
+	      apiType: 'zip'
 	    };
 	    return _this;
 	  }
@@ -23803,13 +23899,21 @@
 	  _createClass(LocationInput, [{
 	    key: 'updateState',
 	    value: function updateState(e) {
+	      var _this2 = this;
+
 	      var _e$target = e.target;
 	      var placeholder = _e$target.placeholder;
 	      var value = _e$target.value;
 
 	      placeholder = placeholder.toLowerCase();
 	      value = value.toLowerCase();
-	      this.setState(_defineProperty({}, placeholder, value));
+	      this.setState(_defineProperty({}, placeholder, value), function () {
+	        if (_this2.state.city !== '' || _this2.state.state !== '') {
+	          _this2.setState({ zip: '', apiType: 'citystate' });
+	        } else if (_this2.state.zip !== '') {
+	          _this2.setState({ state: '', city: '', apiType: 'zip' });
+	        }
+	      });
 	    }
 	  }, {
 	    key: 'submitLocation',
@@ -23821,37 +23925,55 @@
 	      } else {
 	        this.props.invalidInput();
 	      };
+	      this.setState({ //clear input fields
+	        city: '',
+	        state: '',
+	        zip: ''
+	      });
 	    }
 	  }, {
 	    key: 'checkValidInput',
 	    value: function checkValidInput() {
-	      //check city
-	      // var cityValid = true;
-	      // var stateValid = false;
 
-	      var zipValid = false;
-	      // if (this.state.city.match(/^\d+$/)) {
-	      //   cityValid = true;
-	      // } else {
-	      //   cityValid = false
-	      // }
-	      // //check state
-	      // if (STATES.includes(this.state.state)){
-	      //   stateValid = true
-	      // }else {
-	      //   stateValid = false;
-	      // }
-	      //check zip
-	      if (this.state.zip.length === 5 && !this.state.city.match(/^\d+$/)) {
-	        zipValid = true;
+	      if (this.state.zip !== '') {
+	        var isOnlyNumbers = new RegExp(/^\d+$/);
+	        if (this.state.zip.length === 5 && isOnlyNumbers.test(this.state.zip)) {
+	          return true;
+	        } else {
+	          return false;
+	        }
+	      } else if (this.state.city !== '' && this.state.state !== '') {
+
+	        var isOnlyChar = new RegExp(/^[A-Za-z\s]+$/);
+	        if (isOnlyChar.test(this.state.city) && isOnlyChar.test(this.state.state)) {
+	          return true;
+	        } else {
+	          return false;
+	        }
 	      }
-	      // return (cityValid && stateValid && zipValid)
-	      return zipValid;
+
+	      // // if (this.state.city.match(/^\d+$/)) {
+	      // //   cityValid = true;
+	      // // } else {
+	      // //   cityValid = false
+	      // // }
+	      // // //check state
+	      // // if (STATES.includes(this.state.state)){
+	      // //   stateValid = true
+	      // // }else {
+	      // //   stateValid = false;
+	      // // }
+	      // //check zip
+	      // if(this.state.zip.length === 5 && !(this.state.city.match(/^\d+$/))) {
+	      //   zipValid = true;
+	      // }
+	      // // return (cityValid && stateValid && zipValid)
+	      // return zipValid;
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      return React.createElement(
 	        'div',
@@ -23864,8 +23986,8 @@
 	          ' OR '
 	        ),
 	        React.createElement(UserInputField, { inputFieldId: 'zip', text: 'Zip', value: this.state.zip, handleChange: this.updateState.bind(this) }),
-	        React.createElement('input', { type: 'submit', onClick: function onClick(e) {
-	            return _this2.submitLocation(e);
+	        React.createElement('input', { className: 'button', type: 'submit', onClick: function onClick(e) {
+	            return _this3.submitLocation(e);
 	          } })
 	      );
 	    }
@@ -23909,13 +24031,31 @@
 	  _createClass(WeatherDisplay, [{
 	    key: 'render',
 	    value: function render() {
+	      var alert = void 0;
+
+	      if (this.props.weather.alerts.length > 0) {
+	        alert = '{this.props.weather.alerts}';
+	      } else {
+	        alert = '';
+	      }
 	      return React.createElement(
 	        'div',
 	        { id: 'weather-box' },
 	        React.createElement(
 	          'div',
-	          { id: 'current-weather' },
-	          'It\'s ',
+	          { className: 'location' },
+	          'Location: ',
+	          this.props.weather.current_observation.display_location.full
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'alerts' },
+	          alert
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'current-weather' },
+	          'It is ',
 	          this.props.weather.current_observation.weather,
 	          ' outside and the temperature is ',
 	          this.props.weather.current_observation.temp_f,
@@ -23971,23 +24111,32 @@
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { 'class': 'single-day' },
+	        { className: 'single-day' },
 	        React.createElement(
 	          'div',
-	          { 'class': 'day' },
+	          { className: 'day' },
 	          'The forecast for ',
 	          this.props.day,
 	          ' is:'
 	        ),
 	        React.createElement(
 	          'div',
-	          { 'class': 'details' },
-	          'Conditions:  ',
-	          this.props.dailyForecast.conditions,
-	          'The high is ',
-	          this.props.dailyForecast.high.fahrenheit,
-	          ' and the low is ',
-	          this.props.dailyForecast.low.fahrenheit
+	          { className: 'details' },
+	          React.createElement('img', { className: 'daily-image', src: this.props.dailyForecast.icon_url, alt: this.props.dailyForecast.icon }),
+	          React.createElement(
+	            'span',
+	            null,
+	            'Conditions: ',
+	            this.props.dailyForecast.conditions
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'The high is ',
+	            this.props.dailyForecast.high.fahrenheit,
+	            ' and the low is ',
+	            this.props.dailyForecast.low.fahrenheit
+	          )
 	        )
 	      );
 	    }

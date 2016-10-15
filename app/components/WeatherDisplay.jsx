@@ -12,7 +12,7 @@ class WeatherDisplay extends React.Component {
     let alert;
 
     if(this.props.weather.alerts.length > 0){
-       alert = '{this.props.weather.alerts}'
+       alert = (<div className='alerts'>{this.props.weather.alerts[0].message}</div>)
     } else {
       alert = ''
     }
@@ -25,7 +25,7 @@ class WeatherDisplay extends React.Component {
           {alert}
         </div>
         <div className='current-weather'>
-          It is {this.props.weather.current_observation.weather} outside and the temperature is {this.props.weather.current_observation.temp_f} degrees.
+          Currently, it is {this.props.weather.current_observation.weather} outside and the temperature is {this.props.weather.current_observation.temp_f} degrees.
         </div>
          <SingleDay day='Today' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[0]}/>
          <SingleDay day='Tomorrow' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[1]}/>

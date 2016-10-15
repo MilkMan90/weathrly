@@ -1,5 +1,6 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const classNames = require('classnames')
 const SubmitButton = require('./SubmitButton')
 const UserInputField = require('./UserInputField')
 
@@ -16,20 +17,26 @@ class LocationInput extends React.Component {
     this.state = {
       city: '',
       state: '',
-      zip: ''
+      zip: '',
+      apiType: 'zip'
     };
   }
   updateState(e) {
     let {placeholder, value} = e.target;
     placeholder = placeholder.toLowerCase();
     value = value.toLowerCase();
-    this.setState({[placeholder]: value});
+    this.setState({[placeholder]: value},()=>{
+      if(this.state.city !== '' || this.state.state !== ''){
+        this.setState({zip:'', apiType: 'citystate'})
+      } else if(this.state.zip !== ''){
+        this.setState({state:'', city:'', apiType:'zip'})
+      }});
   }
   submitLocation(e) {
     e.preventDefault();
     console.log(this.checkValidInput())
     if(this.checkValidInput()){
-      this.props.getLocation(this.state, 'zip');
+      this.props.getLocation(this.state);
     }else{
       this.props.invalidInput();
     };
@@ -40,30 +47,32 @@ class LocationInput extends React.Component {
     })
   }
   checkValidInput() {
-    //check city
-    // var cityValid = true;
-    // var stateValid = false;
 
-    var zipValid = false;
-    // if (this.state.city.match(/^\d+$/)) {
-    //   cityValid = true;
-    // } else {
-    //   cityValid = false
-    // }
-    // //check state
-    // if (STATES.includes(this.state.state)){
-    //   stateValid = true
-    // }else {
-    //   stateValid = false;
-    // }
-    //check zip
-    if(this.state.zip.length === 5 && !(this.state.city.match(/^\d+$/))) {
-      zipValid = true;
-    }
-    // return (cityValid && stateValid && zipValid)
-    return zipValid;
+     if(this.state.zip !== ''){
+       let isOnlyNumbers = new RegExp(/^\d+$/)
+       if((this.state.zip.length === 5) &&        isOnlyNumbers.test(this.state.zip)
+        ){
+          return true
+        } else {
+          return false
+        }
+     } else if(this.state.city !== '' && this.state.state !==''){
+
+       let isOnlyChar = new RegExp(/^[A-Za-z\s]+$/)
+       if(isOnlyChar.test(this.state.city) && isOnlyChar.test(this.state.state)){
+         return true
+       } else {
+         return false
+       }
+     }
   }
+
   render() {
+    var SubmitClasses = classNames({
+      'button': true,
+      'submit-button': true
+    });
+
     return (
       <div id='input-fields'>
         <UserInputField inputFieldId="city" text="City" value={this.state.city}  handleChange={this.updateState.bind(this)}/>
@@ -74,7 +83,7 @@ class LocationInput extends React.Component {
 
         <UserInputField inputFieldId="zip" text="Zip" value={this.state.zip} handleChange={this.updateState.bind(this)}/>
 
-        <input className='button' type='submit' onClick={ (e) => this.submitLocation(e)} />
+        <input className={SubmitClasses} type='submit' onClick={ (e) => this.submitLocation(e)} />
 
       </div>
     )

@@ -11,7 +11,7 @@ class SingleDay extends React.Component {
     return (
       <div className='single-day'>
         <div className='day'>
-          The forecast for {this.props.day} is:
+          {this.props.day}
         </div>
         <div className='details'>
           <img className='daily-image' src={this.props.dailyForecast.icon_url} alt={this.props.dailyForecast.icon}></img>

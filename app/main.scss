@@ -1,6 +1,9 @@
 $main-background: #cec2c2;
-$button-background: #934592;
+$button-background: #05c2d1;
 $faded-background: rgba(255,255,255,0.4);
+
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
 
 @mixin light-font {
   font-family: helvetica, sans-serif;
@@ -9,12 +12,13 @@ $faded-background: rgba(255,255,255,0.4);
 }
 
 body {
-  background: $main-background;
+  // background: $main-background;
   @include light-font;
 }
 
 h1 {
     font-weight: 100;
+    font-family: 'Merriweather', serif;
     font-size: 35px;
     text-align: center;
 }
@@ -26,7 +30,12 @@ h3 {
     text-align: center;
 }
 
-button {
+.UserInputField{
+  margin: 5px;
+  font-size: 15px;
+  height: 30px;
+}
+.button {
     padding: 20px;
     border-radius: 2px;
     outline: none;
@@ -34,6 +43,7 @@ button {
     background: $button-background;
     color: white;
     margin: 10px;
+    width: 180px;
 
     @include light-font;
     &:hover {
@@ -42,16 +52,48 @@ button {
     }
 }
 
-.button {
-  padding: 20px;
-  border-radius: 2px;
-  outline: none;
-  border: none;
-  background: $button-background;
-  color: white;
-  margin: 10px;
-  width: 160px;
+.submit-button{
+  text-align: center;
+  height: 50px;
+  width: 100px;
 }
+
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  display: block;
+  background-image: url('/images/snowy.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom -200px;
+  width: 1200px;
+  height: 250px;
+
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+header{
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+}
+
+main{
+  position: relative;
+  padding-top: 250px;
+  width: auto;
+}
+
+
 
 #input-fields{
   text-align: center;
@@ -68,19 +110,31 @@ button {
   margin: 100px auto 0 auto;
 }
 
+.alerts {
+  font-size: 12px;
+  color: red;
+}
+.current-weather{
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid teal;
+}
 .location{
   text-align: center;
   margin: 20px;
 }
 
 .single-day{
-  border: 2px solid black;
+  border: 2px solid teal;
   margin: 15px;
 }
 
 .day{
   border-bottom: 1px dashed purple;
+  padding: 5px;
   margin: 5px;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .details{
