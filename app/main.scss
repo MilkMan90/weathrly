@@ -1,6 +1,9 @@
 $main-background: #cec2c2;
-$button-background: #934592;
+$button-background: #05c2d1;
 $faded-background: rgba(255,255,255,0.4);
+
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
 
 @mixin light-font {
   font-family: helvetica, sans-serif;
@@ -15,7 +18,8 @@ body {
 
 h1 {
     font-weight: 100;
-    font-size: 30px;
+    font-family: 'Merriweather', serif;
+    font-size: 35px;
     text-align: center;
 }
 
@@ -26,7 +30,12 @@ h3 {
     text-align: center;
 }
 
-button {
+.UserInputField{
+  margin: 5px;
+  font-size: 15px;
+  height: 30px;
+}
+.button {
     padding: 20px;
     border-radius: 2px;
     outline: none;
@@ -34,12 +43,19 @@ button {
     background: $button-background;
     color: white;
     margin: 10px;
+    width: 180px;
 
     @include light-font;
     &:hover {
       background: darken($button-background, 20);
       cursor: pointer;
     }
+}
+
+.submit-button{
+  text-align: center;
+  height: 50px;
+  width: 100px;
 }
 
 .banner {
@@ -77,16 +93,7 @@ main{
   width: auto;
 }
 
-.button {
-  padding: 20px;
-  border-radius: 2px;
-  outline: none;
-  border: none;
-  background: $button-background;
-  color: white;
-  margin: 10px;
-  width: 160px;
-}
+
 
 #input-fields{
   text-align: center;
@@ -103,19 +110,31 @@ main{
   margin: 100px auto 0 auto;
 }
 
+.alerts {
+  font-size: 12px;
+  color: red;
+}
+.current-weather{
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid teal;
+}
 .location{
   text-align: center;
   margin: 20px;
 }
 
 .single-day{
-  border: 2px solid black;
+  border: 2px solid teal;
   margin: 15px;
 }
 
 .day{
   border-bottom: 1px dashed purple;
+  padding: 5px;
   margin: 5px;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .details{

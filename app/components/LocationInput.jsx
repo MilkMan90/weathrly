@@ -1,5 +1,6 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const classNames = require('classnames')
 const SubmitButton = require('./SubmitButton')
 const UserInputField = require('./UserInputField')
 
@@ -64,26 +65,14 @@ class LocationInput extends React.Component {
          return false
        }
      }
-
-    // // if (this.state.city.match(/^\d+$/)) {
-    // //   cityValid = true;
-    // // } else {
-    // //   cityValid = false
-    // // }
-    // // //check state
-    // // if (STATES.includes(this.state.state)){
-    // //   stateValid = true
-    // // }else {
-    // //   stateValid = false;
-    // // }
-    // //check zip
-    // if(this.state.zip.length === 5 && !(this.state.city.match(/^\d+$/))) {
-    //   zipValid = true;
-    // }
-    // // return (cityValid && stateValid && zipValid)
-    // return zipValid;
   }
+
   render() {
+    var SubmitClasses = classNames({
+      'button': true,
+      'submit-button': true
+    });
+
     return (
       <div id='input-fields'>
         <UserInputField inputFieldId="city" text="City" value={this.state.city}  handleChange={this.updateState.bind(this)}/>
@@ -94,7 +83,7 @@ class LocationInput extends React.Component {
 
         <UserInputField inputFieldId="zip" text="Zip" value={this.state.zip} handleChange={this.updateState.bind(this)}/>
 
-        <input className='button' type='submit' onClick={ (e) => this.submitLocation(e)} />
+        <input className={SubmitClasses} type='submit' onClick={ (e) => this.submitLocation(e)} />
 
       </div>
     )

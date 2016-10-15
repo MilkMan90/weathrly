@@ -121,9 +121,9 @@ class App extends React.Component {
           <div className='banner'>
           </div>
           <header>
-            <h1>Its Weather Time</h1>
+            <h1>Weather Me</h1>
             <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
-            <input className='button' type='submit' value='Get Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
+            <input className='button' type='submit' value='Use Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
           </header>
           <main>
           {invalidInputError}
