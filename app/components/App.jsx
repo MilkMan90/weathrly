@@ -7,7 +7,6 @@ const UserInputField = require('./UserInputField')
 const LocationInput = require('./LocationInput')
 const WeatherDisplay = require('./WeatherDisplay')
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -105,7 +104,7 @@ class App extends React.Component {
     //   errorMessage = (<div>WOOT</div>)
     // }
     if (this.state.invalidInput === true) {
-      invalidInputError = (<div>Please Enter a Valid Zip-code</div>)
+      invalidInputError = (<div className = 'invalid-input'>Please Enter a Valid Zip-code</div>)
     } else {
       invalidInputError = ''
     }
@@ -121,12 +120,12 @@ class App extends React.Component {
           <div className='banner'>
           </div>
           <header>
-            <h1>Weather Me</h1>
+            <h1>WeatherMe</h1>
             <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
+            {invalidInputError}
             <input className='button' type='submit' value='Use Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
           </header>
           <main>
-          {invalidInputError}
           {errorMessage}
           {weatherDisplay}
           </main>

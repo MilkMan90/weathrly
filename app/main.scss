@@ -11,6 +11,13 @@ $faded-background: rgba(255,255,255,0.4);
   letter-spacing: 2px;
 }
 
+@mixin headerFonts{
+  font-size: 35px;
+  border-bottom: 1px dashed purple;
+  font-weight: bold;
+  color: teal;
+}
+
 body {
   // background: $main-background;
   @include light-font;
@@ -18,6 +25,7 @@ body {
 
 h1 {
     font-weight: 100;
+    color: white;
     font-family: 'Merriweather', serif;
     font-size: 35px;
     text-align: center;
@@ -35,6 +43,7 @@ h3 {
   font-size: 15px;
   height: 30px;
 }
+
 .button {
     padding: 20px;
     border-radius: 2px;
@@ -70,17 +79,18 @@ h3 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom -200px;
-  width: 1200px;
-  height: 250px;
+  width: 100%;
+  height: 300px;
 
-  -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
 }
 
 header{
+  color: white;
   width: 100%;
   text-align: center;
   position: fixed;
@@ -89,20 +99,17 @@ header{
 
 main{
   position: relative;
-  padding-top: 250px;
+  padding-top: 300px;
   width: auto;
 }
-
-
 
 #input-fields{
   text-align: center;
 }
-.LikesCounter {
-  height: 300px;
-  width: 300px;
-  margin: 78px auto;
-  background: $faded-background;
+
+.invalid-input{
+  text-align: center;
+  color: lighten(red, 10%);
 }
 
 .ActionButtons {
@@ -110,39 +117,99 @@ main{
   margin: 100px auto 0 auto;
 }
 
+.show-alert{
+  text-align: center;
+  color: red;
+  font-size: 20px;
+  border: 2px solid red;
+}
+
+.show-alert:hover{
+  cursor: pointer;
+}
+
 .alerts {
   font-size: 12px;
   color: red;
 }
+.current-weather-header{
+  text-align: left;
+  @include headerFonts;
+}
 .current-weather{
   margin: 20px;
-  padding: 10px;
+  padding: 5px;
   border: 2px solid teal;
+  text-align: center;
+}
+.cur-weather{
+  font-size: 20px;
+}
+.cur-temp{
+  font-size: 25px;
+  font-weight: bold;
+  color: complement(teal);
 }
 .location{
   text-align: center;
   margin: 20px;
 }
-
 .single-day{
   border: 2px solid teal;
   margin: 15px;
 }
 
+.single-day:hover{
+  cursor: pointer;
+}
+
 .day{
-  border-bottom: 1px dashed purple;
   padding: 5px;
   margin: 5px;
-  font-size: 25px;
-  font-weight: bold;
+  @include headerFonts;
 }
 
 .details{
   margin: 5px;
+  text-align: center;
   .daily-image{
     margin: 5px;
   }
+  .daily-conditions{
+    font-size: 25px;
+  }
   span{
     margin-left: 10px;
+  }
+}
+
+.all-hours{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+}
+.each-hour{
+  border: 1px solid teal;
+  width: 120px;
+  padding: 5px;
+  margin: 5px;
+  .hour-label{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px teal solid;
+  }
+  .hourly-temp{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: complement(teal);
+  }
+  .hourly-pop{
+    text-align: center;
+    font-size: 13px;
+    color: CornflowerBlue;
   }
 }
