@@ -81,10 +81,10 @@
 
 	exports = module.exports = __webpack_require__(3)();
 	// imports
-
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Merriweather);", ""]);
 
 	// module
-	exports.push([module.id, "body {\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n\nh1 {\n  font-weight: 100;\n  font-size: 35px;\n  text-align: center; }\n\nh3 {\n  font-weight: 100;\n  font-size: 20px;\n  color: #5a5959;\n  text-align: center; }\n\nbutton {\n  padding: 20px;\n  border-radius: 2px;\n  outline: none;\n  border: none;\n  background: #934592;\n  color: white;\n  margin: 10px;\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n  button:hover {\n    background: #4e244d;\n    cursor: pointer; }\n\n.bg {\n  position: fixed;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  display: block;\n  background-image: url(\"/images/snowy.jpg\");\n  width: 1200px;\n  height: 800px;\n  -webkit-filter: blur(5px);\n  -moz-filter: blur(5px);\n  -o-filter: blur(5px);\n  -ms-filter: blur(5px);\n  filter: blur(5px); }\n\n.content {\n  position: fixed;\n  left: 0;\n  right: 0;\n  z-index: 9999;\n  margin-left: 20px;\n  margin-right: 20px; }\n\n.button {\n  padding: 20px;\n  border-radius: 2px;\n  outline: none;\n  border: none;\n  background: #934592;\n  color: white;\n  margin: 10px;\n  width: 160px; }\n\n#input-fields {\n  text-align: center; }\n\n.LikesCounter {\n  height: 300px;\n  width: 300px;\n  margin: 78px auto;\n  background: rgba(255, 255, 255, 0.4); }\n\n.ActionButtons {\n  width: 240px;\n  margin: 100px auto 0 auto; }\n\n.location {\n  text-align: center;\n  margin: 20px; }\n\n.single-day {\n  border: 2px solid black;\n  margin: 15px; }\n\n.day {\n  border-bottom: 1px dashed purple;\n  margin: 5px; }\n\n.details {\n  margin: 5px; }\n  .details .daily-image {\n    margin: 5px; }\n  .details span {\n    margin-left: 10px; }\n", ""]);
+	exports.push([module.id, "body {\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n\nh1 {\n  font-weight: 100;\n  color: white;\n  font-family: 'Merriweather', serif;\n  font-size: 35px;\n  text-align: center; }\n\nh3 {\n  font-weight: 100;\n  font-size: 20px;\n  color: #5a5959;\n  text-align: center; }\n\n.UserInputField {\n  margin: 5px;\n  font-size: 15px;\n  height: 30px; }\n\n.button {\n  padding: 20px;\n  border-radius: 2px;\n  outline: none;\n  border: none;\n  background: #05c2d1;\n  color: white;\n  margin: 10px;\n  width: 180px;\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n  .button:hover {\n    background: #03666d;\n    cursor: pointer; }\n\n.submit-button {\n  text-align: center;\n  height: 50px;\n  width: 100px; }\n\n.banner {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  display: block;\n  background-image: url(\"/images/snowy.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: bottom -200px;\n  width: 100%;\n  height: 300px;\n  -webkit-filter: blur(2px);\n  -moz-filter: blur(2px);\n  -o-filter: blur(2px);\n  -ms-filter: blur(2px);\n  filter: blur(2px); }\n\nheader {\n  color: white;\n  width: 100%;\n  text-align: center;\n  position: fixed;\n  z-index: 999; }\n\nmain {\n  position: relative;\n  padding-top: 300px;\n  width: auto; }\n\n#input-fields {\n  text-align: center; }\n\n.invalid-input {\n  text-align: center;\n  color: #ff3333; }\n\n.ActionButtons {\n  width: 240px;\n  margin: 100px auto 0 auto; }\n\n.show-alert {\n  text-align: center;\n  color: red;\n  font-size: 20px;\n  border: 2px solid red; }\n\n.show-alert:hover {\n  cursor: pointer; }\n\n.alerts {\n  font-size: 12px;\n  color: red; }\n\n.current-weather-header {\n  text-align: left;\n  font-size: 35px;\n  border-bottom: 1px dashed purple;\n  font-weight: bold;\n  color: teal; }\n\n.current-weather {\n  margin: 20px;\n  padding: 5px;\n  border: 2px solid teal;\n  text-align: center; }\n\n.cur-weather {\n  font-size: 20px; }\n\n.cur-temp {\n  font-size: 25px;\n  font-weight: bold;\n  color: maroon; }\n\n.location {\n  text-align: center;\n  margin: 20px; }\n\n.single-day {\n  border: 2px solid teal;\n  margin: 15px; }\n\n.single-day:hover {\n  cursor: pointer; }\n\n.day {\n  padding: 5px;\n  margin: 5px;\n  font-size: 35px;\n  border-bottom: 1px dashed purple;\n  font-weight: bold;\n  color: teal; }\n\n.details {\n  margin: 5px;\n  text-align: center; }\n  .details .daily-image {\n    margin: 5px; }\n  .details .daily-conditions {\n    font-size: 25px; }\n  .details span {\n    margin-left: 10px; }\n\n.all-hours {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  width: 100%;\n  height: auto; }\n\n.each-hour {\n  border: 1px solid teal;\n  width: 120px;\n  padding: 5px;\n  margin: 5px; }\n  .each-hour .hour-label {\n    padding: 10px;\n    text-align: center;\n    border-bottom: 1px teal solid; }\n  .each-hour .hourly-temp {\n    margin-top: 10px;\n    text-align: center;\n    font-size: 25px;\n    font-weight: bold;\n    color: maroon; }\n  .each-hour .hourly-pop {\n    text-align: center;\n    font-size: 13px;\n    color: CornflowerBlue; }\n", ""]);
 
 	// exports
 
@@ -404,8 +404,6 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -419,7 +417,7 @@
 	var SubmitButton = __webpack_require__(181);
 	var UserInputField = __webpack_require__(182);
 	var LocationInput = __webpack_require__(183);
-	var WeatherDisplay = __webpack_require__(184);
+	var WeatherDisplay = __webpack_require__(186);
 
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -565,7 +563,7 @@
 	      if (this.state.invalidInput === true) {
 	        invalidInputError = React.createElement(
 	          'div',
-	          null,
+	          { className: 'invalid-input' },
 	          'Please Enter a Valid Zip-code'
 	        );
 	      } else {
@@ -573,33 +571,32 @@
 	      }
 
 	      if (this.state.data) {
-	        weatherDisplay = React.createElement(WeatherDisplay, { weather: this.state.data });
+	        weatherDisplay = React.createElement(WeatherDisplay, { className: 'weather', weather: this.state.data });
 	      } else {
 	        weatherDisplay = '';
 	      }
 
 	      return React.createElement(
 	        'div',
-	        { className: 'container' },
-	        React.createElement('div', _defineProperty({ className: 'bg' }, 'className', weatherStyle)),
+	        { className: 'app' },
+	        React.createElement('div', { className: 'banner' }),
 	        React.createElement(
-	          'div',
-	          { className: 'content' },
+	          'header',
+	          null,
 	          React.createElement(
 	            'h1',
 	            null,
-	            'Its Weather Time'
-	          ),
-	          React.createElement(
-	            'h3',
-	            null,
-	            'Enter a Location'
+	            'WeatherMe'
 	          ),
 	          React.createElement(LocationInput, { getLocation: this.setLocation.bind(this), invalidInput: this.invalidInput.bind(this) }),
-	          React.createElement('input', { className: 'button', type: 'submit', value: 'Get Current Location', onClick: function onClick() {
-	              return _this6.setLocation({ apiType: 'ip' });
-	            } }),
 	          invalidInputError,
+	          React.createElement('input', { className: 'button', type: 'submit', value: 'Use Current Location', onClick: function onClick() {
+	              return _this6.setLocation({ apiType: 'ip' });
+	            } })
+	        ),
+	        React.createElement(
+	          'main',
+	          null,
 	          errorMessage,
 	          weatherDisplay
 	        )
@@ -23874,6 +23871,7 @@
 
 	var React = __webpack_require__(8);
 	var ReactDOM = __webpack_require__(41);
+	var classNames = __webpack_require__(184);
 	var SubmitButton = __webpack_require__(181);
 	var UserInputField = __webpack_require__(182);
 
@@ -23951,29 +23949,16 @@
 	          return false;
 	        }
 	      }
-
-	      // // if (this.state.city.match(/^\d+$/)) {
-	      // //   cityValid = true;
-	      // // } else {
-	      // //   cityValid = false
-	      // // }
-	      // // //check state
-	      // // if (STATES.includes(this.state.state)){
-	      // //   stateValid = true
-	      // // }else {
-	      // //   stateValid = false;
-	      // // }
-	      // //check zip
-	      // if(this.state.zip.length === 5 && !(this.state.city.match(/^\d+$/))) {
-	      //   zipValid = true;
-	      // }
-	      // // return (cityValid && stateValid && zipValid)
-	      // return zipValid;
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
+
+	      var SubmitClasses = classNames({
+	        'button': true,
+	        'submit-button': true
+	      });
 
 	      return React.createElement(
 	        'div',
@@ -23986,7 +23971,7 @@
 	          ' OR '
 	        ),
 	        React.createElement(UserInputField, { inputFieldId: 'zip', text: 'Zip', value: this.state.zip, handleChange: this.updateState.bind(this) }),
-	        React.createElement('input', { className: 'button', type: 'submit', onClick: function onClick(e) {
+	        React.createElement('input', { className: SubmitClasses, type: 'submit', onClick: function onClick(e) {
 	            return _this3.submitLocation(e);
 	          } })
 	      );
@@ -24002,83 +23987,69 @@
 /* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	(function () {
+		'use strict';
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+		var hasOwn = {}.hasOwnProperty;
 
-	var React = __webpack_require__(8);
-	var ReactDOM = __webpack_require__(41);
-	var SingleDay = __webpack_require__(185);
+		function classNames() {
+			var classes = [];
 
-	var WeatherDisplay = function (_React$Component) {
-	  _inherits(WeatherDisplay, _React$Component);
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
 
-	  function WeatherDisplay(props) {
-	    _classCallCheck(this, WeatherDisplay);
+				var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
 
-	    var _this = _possibleConstructorReturn(this, (WeatherDisplay.__proto__ || Object.getPrototypeOf(WeatherDisplay)).call(this, props));
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
 
-	    _this.state = {};
-	    return _this;
-	  }
+			return classes.join(' ');
+		}
 
-	  _createClass(WeatherDisplay, [{
-	    key: 'render',
-	    value: function render() {
-	      var alert = void 0;
-
-	      if (this.props.weather.alerts.length > 0) {
-	        alert = '{this.props.weather.alerts}';
-	      } else {
-	        alert = '';
-	      }
-	      return React.createElement(
-	        'div',
-	        { id: 'weather-box' },
-	        React.createElement(
-	          'div',
-	          { className: 'location' },
-	          'Location: ',
-	          this.props.weather.current_observation.display_location.full
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'alerts' },
-	          alert
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'current-weather' },
-	          'It is ',
-	          this.props.weather.current_observation.weather,
-	          ' outside and the temperature is ',
-	          this.props.weather.current_observation.temp_f,
-	          ' degrees.'
-	        ),
-	        React.createElement(SingleDay, { day: 'Today', dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[0] }),
-	        React.createElement(SingleDay, { day: 'Tomorrow', dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[1] }),
-	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[2].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[2] }),
-	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[3].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[3] }),
-	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[4].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[4] }),
-	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[5].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[5] }),
-	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[6].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[6] })
-	      );
-	    }
-	  }]);
-
-	  return WeatherDisplay;
-	}(React.Component);
-
-	module.exports = WeatherDisplay;
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if ("function" === 'function' && _typeof(__webpack_require__(185)) === 'object' && __webpack_require__(185)) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	})();
 
 /***/ },
 /* 185 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ },
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24093,6 +24064,161 @@
 
 	var React = __webpack_require__(8);
 	var ReactDOM = __webpack_require__(41);
+	var SingleDay = __webpack_require__(187);
+
+	var WeatherDisplay = function (_React$Component) {
+	  _inherits(WeatherDisplay, _React$Component);
+
+	  function WeatherDisplay(props) {
+	    _classCallCheck(this, WeatherDisplay);
+
+	    var _this = _possibleConstructorReturn(this, (WeatherDisplay.__proto__ || Object.getPrototypeOf(WeatherDisplay)).call(this, props));
+
+	    _this.state = {
+	      hourlyForecastArray: [''],
+	      showAlert: false
+	    };
+	    return _this;
+	  }
+
+	  _createClass(WeatherDisplay, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      //calculate starting hourly inde
+	      var date = new Date();
+	      var currentTimeIndex = date.getHours();
+	      var hoursRemainingInDay = 24 - currentTimeIndex;
+	      this.sliceHourlyArray(hoursRemainingInDay);
+	    }
+	  }, {
+	    key: 'sliceHourlyArray',
+	    value: function sliceHourlyArray(hoursRemainingInDay) {
+	      console.log(this.state.dayOneStartingHourlyIndex);
+	      var tempForecastArray = [];
+	      tempForecastArray[0] = this.props.weather.hourly_forecast.slice(0, hoursRemainingInDay);
+	      for (var i = 1; i < 7; i++) {
+	        var temp = this.props.weather.hourly_forecast.slice((i - 1) * 24 + hoursRemainingInDay, i * 24 + hoursRemainingInDay);
+	        tempForecastArray.push(temp);
+	      }
+	      this.setState({
+	        hourlyForecastArray: tempForecastArray
+	      });
+	    }
+	  }, {
+	    key: 'showAlert',
+	    value: function showAlert() {
+	      if (this.state.showAlert === false) {
+	        this.setState({
+	          showAlert: true
+	        });
+	      } else {
+	        this.setState({
+	          showAlert: false
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var alert = void 0;
+
+	      if (this.props.weather.alerts.length > 0) {
+	        if (this.state.showAlert === true) {
+	          alert = React.createElement(
+	            'div',
+	            { className: 'alerts' },
+	            this.props.weather.alerts[0].message
+	          );
+	        } else {
+	          alert = React.createElement(
+	            'div',
+	            { className: 'show-alert' },
+	            'Click to Show Alert'
+	          );
+	        }
+	      } else {
+	        alert = '';
+	      }
+
+	      return React.createElement(
+	        'div',
+	        { id: 'weather-box' },
+	        React.createElement(
+	          'div',
+	          { className: 'location' },
+	          React.createElement(
+	            'strong',
+	            null,
+	            'Location:'
+	          ),
+	          ' ',
+	          this.props.weather.current_observation.display_location.full
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'alerts', onClick: this.showAlert.bind(this) },
+	          alert
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'current-weather' },
+	          React.createElement(
+	            'div',
+	            { className: 'current-weather-header' },
+	            'Now'
+	          ),
+	          React.createElement('img', { className: 'daily-image', src: this.props.weather.current_observation.icon_url, alt: this.props.weather.current_observation.icon }),
+	          React.createElement(
+	            'p',
+	            { className: 'cur-weather' },
+	            this.props.weather.current_observation.weather
+	          ),
+	          React.createElement(
+	            'p',
+	            { className: 'cur-temp' },
+	            this.props.weather.current_observation.temp_f,
+	            '\xB0 '
+	          )
+	        ),
+	        React.createElement(
+	          'p',
+	          { className: 'location' },
+	          'Click on any day for hourly temps'
+	        ),
+	        React.createElement(SingleDay, { day: 'Today', dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[0], hourlyArray: this.state.hourlyForecastArray[0] }),
+	        React.createElement(SingleDay, { day: 'Tomorrow', dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[1], hourlyArray: this.state.hourlyForecastArray[1] }),
+	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[2].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[2], hourlyArray: this.state.hourlyForecastArray[2] }),
+	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[3].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[3], hourlyArray: this.state.hourlyForecastArray[3] }),
+	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[4].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[4],
+	          hourlyArray: this.state.hourlyForecastArray[4] }),
+	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[5].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[5], hourlyArray: this.state.hourlyForecastArray[5] }),
+	        React.createElement(SingleDay, { day: this.props.weather.forecast.simpleforecast.forecastday[6].date.weekday, dailyForecast: this.props.weather.forecast.simpleforecast.forecastday[6], hourlyArray: this.state.hourlyForecastArray[6] })
+	      );
+	    }
+	  }]);
+
+	  return WeatherDisplay;
+	}(React.Component);
+
+	module.exports = WeatherDisplay;
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(8);
+	var ReactDOM = __webpack_require__(41);
+	var Hourly = __webpack_require__(188);
 
 	var SingleDay = function (_React$Component) {
 	  _inherits(SingleDay, _React$Component);
@@ -24102,31 +24228,52 @@
 
 	    var _this = _possibleConstructorReturn(this, (SingleDay.__proto__ || Object.getPrototypeOf(SingleDay)).call(this, props));
 
-	    _this.state = {};
+	    _this.state = {
+	      showHourly: false
+	    };
 	    return _this;
 	  }
 
 	  _createClass(SingleDay, [{
+	    key: 'showHourly',
+	    value: function showHourly() {
+
+	      if (this.state.showHourly === false) {
+	        this.setState({
+	          showHourly: true
+	        });
+	      } else {
+	        this.setState({
+	          showHourly: false
+	        });
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var hourlyForecast = void 0;
+
+	      if (this.state.showHourly === true) {
+	        hourlyForecast = Hourly(this.props.hourlyArray);
+	      } else {
+	        hourlyForecast = '';
+	      }
+
 	      return React.createElement(
 	        'div',
-	        { className: 'single-day' },
+	        { className: 'single-day', onClick: this.showHourly.bind(this) },
 	        React.createElement(
 	          'div',
 	          { className: 'day' },
-	          'The forecast for ',
-	          this.props.day,
-	          ' is:'
+	          this.props.day
 	        ),
 	        React.createElement(
 	          'div',
 	          { className: 'details' },
 	          React.createElement('img', { className: 'daily-image', src: this.props.dailyForecast.icon_url, alt: this.props.dailyForecast.icon }),
 	          React.createElement(
-	            'span',
-	            null,
-	            'Conditions: ',
+	            'div',
+	            { className: 'daily-conditions' },
 	            this.props.dailyForecast.conditions
 	          ),
 	          React.createElement(
@@ -24134,9 +24281,17 @@
 	            null,
 	            'The high is ',
 	            this.props.dailyForecast.high.fahrenheit,
-	            ' and the low is ',
-	            this.props.dailyForecast.low.fahrenheit
+	            '\xB0 and the low is ',
+	            this.props.dailyForecast.low.fahrenheit,
+	            '\xB0. There is a ',
+	            this.props.dailyForecast.pop,
+	            '% chance of precepitation.'
 	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'hourly' },
+	          hourlyForecast
 	        )
 	      );
 	    }
@@ -24146,6 +24301,61 @@
 	}(React.Component);
 
 	module.exports = SingleDay;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(8);
+	var ReactDOM = __webpack_require__(41);
+
+	var HourlyForecast = function HourlyForecast(hourlyForecast) {
+
+	  console.log(hourlyForecast);
+	  var startingHour = 25 - hourlyForecast.length;
+	  var amorpm = ' am';
+	  if (startingHour > 12) {
+	    startingHour = startingHour - 12;
+	    amorpm = ' pm';
+	  }
+
+	  var hours = [];
+	  hourlyForecast.forEach(function (hour) {
+	    hours.push(PerHour(hour));
+	  });
+	  return React.createElement(
+	    'div',
+	    { className: 'all-hours' },
+	    hours
+	  );
+	};
+
+	var PerHour = function PerHour(hour) {
+	  return React.createElement(
+	    'span',
+	    { key: hour.FCTTIME.hour, className: 'each-hour' },
+	    React.createElement(
+	      'div',
+	      { className: 'hour-label' },
+	      hour.FCTTIME.civil
+	    ),
+	    React.createElement(
+	      'div',
+	      { className: 'hourly-temp' },
+	      hour.temp.english,
+	      '\xB0'
+	    ),
+	    React.createElement(
+	      'div',
+	      { className: 'hourly-pop' },
+	      hour.pop,
+	      '% precip'
+	    )
+	  );
+	};
+	module.exports = HourlyForecast;
 
 /***/ }
 /******/ ]);
