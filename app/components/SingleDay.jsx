@@ -29,6 +29,7 @@ class SingleDay extends React.Component {
     } else {
       hourlyForecast ='';
     }
+
     return (
       <div className='single-day' onClick={this.showHourly.bind(this)}>
         <div className='day'>
