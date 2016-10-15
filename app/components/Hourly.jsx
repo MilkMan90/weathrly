@@ -27,6 +27,7 @@ const PerHour = (hour) =>{
     <span key={hour.FCTTIME.hour} className = 'each-hour'>
        <div className= "hour-label">{hour.FCTTIME.civil}</div>
        <div className= "hourly-temp">{hour.temp.english}&deg;</div>
+       <div className= "hourly-pop">{hour.pop}% precip</div>
     </span>
   )
 }

@@ -64,11 +64,11 @@ class WeatherDisplay extends React.Component {
         <div className='current-weather'>
           <div className = 'current-weather-header'>Now</div>
             <img className='daily-image' src={this.props.weather.current_observation.icon_url} alt={this.props.weather.current_observation.icon}></img>
-          <p>
           <p className = 'cur-weather'>
-          {this.props.weather.current_observation.weather}</p> <p className = 'cur-temp'>{this.props.weather.current_observation.temp_f}&deg; </p>
-          </p>
+          {this.props.weather.current_observation.weather}</p>
+          <p className = 'cur-temp'>{this.props.weather.current_observation.temp_f}&deg; </p>
         </div>
+        <p className='location'>Click on any day for hourly temps</p>
          <SingleDay day='Today' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[0]} hourlyArray = {this.state.hourlyForecastArray[0]}/>
          <SingleDay day='Tomorrow' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[1]} hourlyArray = {this.state.hourlyForecastArray[1]}/>
          <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[2].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[2]} hourlyArray = {this.state.hourlyForecastArray[2]}/>
