@@ -1,5 +1,6 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const Hourly = require('./Hourly')
 
 class SingleDay extends React.Component {
   constructor(props) {
@@ -24,8 +25,9 @@ class SingleDay extends React.Component {
   render() {
     let hourlyForecast;
 
+
     if(this.state.showHourly === true){
-      hourlyForecast = 'showing hourly'
+      hourlyForecast = Hourly(this.props.hourlyArray)
     } else {
       hourlyForecast ='';
     }

@@ -24,7 +24,9 @@ class WeatherDisplay extends React.Component {
       let temp = this.props.weather.hourly_forecast.slice(((i-1)*24)+hoursRemainingInDay, (i*24)+hoursRemainingInDay)
       tempForecastArray.push(temp)
     }
-    console.log(tempForecastArray);
+    this.setState({
+      hourlyForecastArray: tempForecastArray
+    })
   }
   render() {
     let alert;
@@ -45,14 +47,14 @@ class WeatherDisplay extends React.Component {
         <div className='current-weather'>
           Currently, it is {this.props.weather.current_observation.weather} outside and the temperature is {this.props.weather.current_observation.temp_f} degrees.
         </div>
-         <SingleDay day='Today' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[0]} hourlyArray = {this.props.weather.hourlyForecast}/>
-         <SingleDay day='Tomorrow' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[1]} dayIndex = {1}/>
-         <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[2].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[2]} dayIndex = {2}/>
-         <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[3].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[3]} dayIndex ={3}/>
+         <SingleDay day='Today' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[0]} hourlyArray = {this.state.hourlyForecastArray[0]}/>
+         <SingleDay day='Tomorrow' dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[1]} hourlyArray = {this.state.hourlyForecastArray[1]}/>
+         <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[2].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[2]} hourlyArray = {this.state.hourlyForecastArray[2]}/>
+         <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[3].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[3]} hourlyArray = {this.state.hourlyForecastArray[3]}/>
          <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[4].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[4]}
-          dayIndex = {4}/>
-         <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[5].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[5]} dayIndex = {5}/>
-         <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[6].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[6]} dayIndex = {6}/>
+          hourlyArray = {this.state.hourlyForecastArray[4]}/>
+         <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[5].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[5]} hourlyArray = {this.state.hourlyForecastArray[5]}/>
+         <SingleDay day={this.props.weather.forecast.simpleforecast.forecastday[6].date.weekday} dailyForecast = {this.props.weather.forecast.simpleforecast.forecastday[6]} hourlyArray = {this.state.hourlyForecastArray[6]}/>
           </div>
     )
   }
