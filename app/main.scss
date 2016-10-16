@@ -23,6 +23,11 @@ body {
   @include light-font;
 }
 
+.logo{
+    height: 50px;
+    display: inline-block;
+}
+
 h1 {
     font-weight: 100;
     color: white;
@@ -41,11 +46,10 @@ h3 {
 .UserInputField{
   margin: 5px;
   font-size: 15px;
-  height: 30px;
+  height: 25px;
 }
 
 .button {
-    padding: 20px;
     border-radius: 2px;
     outline: none;
     border: none;
@@ -63,7 +67,7 @@ h3 {
 
 .submit-button{
   text-align: center;
-  height: 50px;
+  height: 30px;
   width: 100px;
 }
 
@@ -80,7 +84,7 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom -200px;
   width: 100%;
-  height: 300px;
+  height: 100px;
 
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
@@ -92,19 +96,22 @@ h3 {
 header{
   color: white;
   width: 100%;
-  text-align: center;
   position: fixed;
   z-index: 999;
 }
 
 main{
   position: relative;
-  padding-top: 300px;
+  padding-top: 100px;
   width: auto;
 }
 
 #input-fields{
   text-align: center;
+  display: inline-block;
+  #state{
+    width: 50px;
+  }
 }
 
 .invalid-input{

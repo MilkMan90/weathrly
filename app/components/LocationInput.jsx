@@ -82,7 +82,7 @@ class LocationInput extends React.Component {
 
         <UserInputField inputFieldId="zip" text="Zip" value={this.state.zip} handleChange={this.updateState.bind(this)}/>
 
-        <input className={SubmitClasses} type='submit' onClick={ (e) => this.submitLocation(e)} />
+        <input className={SubmitClasses} type='submit' value='Change Location' onClick={ (e) => this.submitLocation(e)} />
 
       </div>
     )

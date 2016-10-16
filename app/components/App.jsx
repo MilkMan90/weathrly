@@ -25,38 +25,24 @@ class App extends React.Component {
       zip: zip,
       invalidInput: false
     }, () => {
-      switch(apiType){
-        case 'ip':
-          this.callipAPI()
-          break;
-        case 'zip':
-          this.callZipAPI()
-          break;
-        case 'citystate':
-          this.callCityAPI()
-          break;
+        this.getWeatherFromAPI(apiType);
       }
-    }
     );
   }
-  callipAPI (){
-    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
-    $.get(url, function(data) {
-      this.setState({
-        data:data,
-      },() =>{this.saveLocation()})
-    }.bind(this));
-  }
-  callZipAPI() {
-    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip +'.json'
-    $.get(url, function(data) {
-      this.setState({
-        data:data,
-      },() =>{this.saveLocation()})
-    }.bind(this));
-  }
-  callCityAPI() {
-    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/'+this.state.state+'/'+this.state.city+'.json'
+
+  getWeatherFromAPI(apiType){
+    let url;
+    switch(apiType){
+      case 'ip':
+        url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
+        break;
+      case 'zip':
+        url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip +'.json'
+        break;
+      case 'citystate':
+        url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/'+this.state.state+'/'+this.state.city+'.json'
+        break;
+    }
     $.get(url, function(data) {
       this.setState({
         data:data,
@@ -104,7 +90,6 @@ class App extends React.Component {
     }
 
     if(this.state.data !== ''){
-      console.log(this.state.data.response.hasOwnProperty('error'))
       if(this.state.data.response.hasOwnProperty('error')){
         console.log(this.state.data.response.error.description)
          errorMessage = <div>{this.state.data.response.error.description}</div>
@@ -126,7 +111,7 @@ class App extends React.Component {
           <div className='banner'>
           </div>
           <header>
-            <h1>WeatherMe</h1>
+            <img className='logo' src='/images/weatherMeLogo.svg'/>
             <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
             {invalidInputError}
             <input className='button' type='submit' value='Use Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
@@ -140,4 +125,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render( <App url='http://api.wunderground.com/api/881631f063e09bd3/'/>, document.getElementById('application'))
+ReactDOM.render( <App url='https://api.wunderground.com/api/881631f063e09bd3/'/>, document.getElementById('application'))
