@@ -12,8 +12,7 @@ class WeatherDisplay extends React.Component {
   }
   componentWillMount () {
     //calculate starting hourly inde
-    let date = new Date()
-    let currentTimeIndex = date.getHours()
+    let currentTimeIndex = parseInt(this.props.weather.hourly_forecast[0].FCTTIME.hour)
     let hoursRemainingInDay = (24 - currentTimeIndex)
     this.sliceHourlyArray(hoursRemainingInDay);
   }

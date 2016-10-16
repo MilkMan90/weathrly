@@ -25,50 +25,26 @@ class App extends React.Component {
       zip: zip,
       invalidInput: false
     }, () => {
-      switch(apiType){
-        case 'ip':
-          this.callipAPI()
-          break;
-        case 'zip':
-          console.log('suh dude')
-          this.callZipAPI()
-          break;
-        case 'citystate':
-          this.callCityAPI()
-          break;
+        this.getWeatherFromAPI(apiType);
       }
-    }
     );
   }
-  callipAPI (){
-    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
+  getWeatherFromAPI(apiType){
+    let url;
+    switch(apiType){
+      case 'ip':
+        url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
+        break;
+      case 'zip':
+        url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip +'.json'
+        break;
+      case 'citystate':
+        url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/'+this.state.state+'/'+this.state.city+'.json'
+        break;
+    }
     $.get(url, function(data) {
-      console.log(data)
       this.setState({
         data:data,
-        zip:data.current_observation.display_location.zip
-      },() =>{this.saveLocation()})
-    }.bind(this));
-  }
-  callZipAPI() {
-    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip +'.json'
-    console.log(url)
-    $.get(url, function(data) {
-      console.log(data)
-      this.setState({
-        data:data,
-      },() =>{this.saveLocation()})
-      console.log(data);
-    }.bind(this));
-  }
-  callCityAPI() {
-    var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/'+this.state.state+'/'+this.state.city+'.json'
-    console.log(url)
-    $.get(url, function(data) {
-      console.log(data)
-      this.setState({
-        data:data,
-        zip:data.current_observation.display_location.zip
       },() =>{this.saveLocation()})
     }.bind(this));
   }
@@ -78,13 +54,17 @@ class App extends React.Component {
     })
   }
   saveLocation () {
-    var storedLocation = {
-      city: this.state.city,
-      state: this.state.state,
-      zip: this.state.zip,
-      apiType: 'zip'
-    }
-    localStorage.setItem('savedLocation', JSON.stringify(storedLocation))
+    this.setState({
+      zip: this.state.data.current_observation.display_location.zip
+    }, ()=>{
+      var storedLocation = {
+        city: this.state.city,
+        state: this.state.state,
+        zip: this.state.zip,
+        apiType: 'zip'
+      }
+      localStorage.setItem('savedLocation', JSON.stringify(storedLocation))
+    })
   }
   retrieveLocation () {
     return JSON.parse(localStorage.getItem('savedLocation'))
@@ -96,20 +76,30 @@ class App extends React.Component {
     }
   }
   render () {
+    let errorExists;
     let errorMessage;
     let invalidInputError;
     let weatherDisplay;
     let weatherStyle;
-    // if(true) {
-    //   errorMessage = (<div>WOOT</div>)
-    // }
+
     if (this.state.invalidInput === true) {
       invalidInputError = (<div className = 'invalid-input'>Please Enter a Valid Zip-code</div>)
     } else {
       invalidInputError = ''
     }
 
-    if (this.state.data){
+    if(this.state.data !== ''){
+      if(this.state.data.response.hasOwnProperty('error')){
+        console.log(this.state.data.response.error.description)
+         errorMessage = <div>{this.state.data.response.error.description}</div>
+        errorExists = true;
+        } else {
+          errorMessage=''
+          errorExists = false;
+        }
+    }
+
+     if (this.state.data && errorExists===false){
       weatherDisplay = (<WeatherDisplay className='weather' weather={this.state.data}/>)
     } else {
       weatherDisplay = '';
@@ -134,4 +124,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render( <App url='http://api.wunderground.com/api/881631f063e09bd3/'/>, document.getElementById('application'))
+ReactDOM.render( <App url='https://api.wunderground.com/api/881631f063e09bd3/'/>, document.getElementById('application'))
