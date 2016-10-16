@@ -458,7 +458,6 @@
 	            _this2.callipAPI();
 	            break;
 	          case 'zip':
-	            console.log('suh dude');
 	            _this2.callZipAPI();
 	            break;
 	          case 'citystate':
@@ -474,10 +473,8 @@
 	      $.get(url, function (data) {
 	        var _this3 = this;
 
-	        console.log(data);
 	        this.setState({
-	          data: data,
-	          zip: data.current_observation.display_location.zip
+	          data: data
 	        }, function () {
 	          _this3.saveLocation();
 	        });
@@ -487,31 +484,25 @@
 	    key: 'callZipAPI',
 	    value: function callZipAPI() {
 	      var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip + '.json';
-	      console.log(url);
 	      $.get(url, function (data) {
 	        var _this4 = this;
 
-	        console.log(data);
 	        this.setState({
 	          data: data
 	        }, function () {
 	          _this4.saveLocation();
 	        });
-	        console.log(data);
 	      }.bind(this));
 	    }
 	  }, {
 	    key: 'callCityAPI',
 	    value: function callCityAPI() {
 	      var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.state + '/' + this.state.city + '.json';
-	      console.log(url);
 	      $.get(url, function (data) {
 	        var _this5 = this;
 
-	        console.log(data);
 	        this.setState({
-	          data: data,
-	          zip: data.current_observation.display_location.zip
+	          data: data
 	        }, function () {
 	          _this5.saveLocation();
 	        });
@@ -527,13 +518,19 @@
 	  }, {
 	    key: 'saveLocation',
 	    value: function saveLocation() {
-	      var storedLocation = {
-	        city: this.state.city,
-	        state: this.state.state,
-	        zip: this.state.zip,
-	        apiType: 'zip'
-	      };
-	      localStorage.setItem('savedLocation', JSON.stringify(storedLocation));
+	      var _this6 = this;
+
+	      this.setState({
+	        zip: this.state.data.current_observation.display_location.zip
+	      }, function () {
+	        var storedLocation = {
+	          city: _this6.state.city,
+	          state: _this6.state.state,
+	          zip: _this6.state.zip,
+	          apiType: 'zip'
+	        };
+	        localStorage.setItem('savedLocation', JSON.stringify(storedLocation));
+	      });
 	    }
 	  }, {
 	    key: 'retrieveLocation',
@@ -551,15 +548,14 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this6 = this;
+	      var _this7 = this;
 
+	      var errorExists = void 0;
 	      var errorMessage = void 0;
 	      var invalidInputError = void 0;
 	      var weatherDisplay = void 0;
 	      var weatherStyle = void 0;
-	      // if(true) {
-	      //   errorMessage = (<div>WOOT</div>)
-	      // }
+
 	      if (this.state.invalidInput === true) {
 	        invalidInputError = React.createElement(
 	          'div',
@@ -570,7 +566,23 @@
 	        invalidInputError = '';
 	      }
 
-	      if (this.state.data) {
+	      if (this.state.data !== '') {
+	        console.log(this.state.data.response.hasOwnProperty('error'));
+	        if (this.state.data.response.hasOwnProperty('error')) {
+	          console.log(this.state.data.response.error.description);
+	          errorMessage = React.createElement(
+	            'div',
+	            null,
+	            this.state.data.response.error.description
+	          );
+	          errorExists = true;
+	        } else {
+	          errorMessage = '';
+	          errorExists = false;
+	        }
+	      }
+
+	      if (this.state.data && errorExists === false) {
 	        weatherDisplay = React.createElement(WeatherDisplay, { className: 'weather', weather: this.state.data });
 	      } else {
 	        weatherDisplay = '';
@@ -591,7 +603,7 @@
 	          React.createElement(LocationInput, { getLocation: this.setLocation.bind(this), invalidInput: this.invalidInput.bind(this) }),
 	          invalidInputError,
 	          React.createElement('input', { className: 'button', type: 'submit', value: 'Use Current Location', onClick: function onClick() {
-	              return _this6.setLocation({ apiType: 'ip' });
+	              return _this7.setLocation({ apiType: 'ip' });
 	            } })
 	        ),
 	        React.createElement(
@@ -23917,7 +23929,6 @@
 	    key: 'submitLocation',
 	    value: function submitLocation(e) {
 	      e.preventDefault();
-	      console.log(this.checkValidInput());
 	      if (this.checkValidInput()) {
 	        this.props.getLocation(this.state);
 	      } else {
@@ -24093,7 +24104,6 @@
 	  }, {
 	    key: 'sliceHourlyArray',
 	    value: function sliceHourlyArray(hoursRemainingInDay) {
-	      console.log(this.state.dayOneStartingHourlyIndex);
 	      var tempForecastArray = [];
 	      tempForecastArray[0] = this.props.weather.hourly_forecast.slice(0, hoursRemainingInDay);
 	      for (var i = 1; i < 7; i++) {
@@ -24312,8 +24322,6 @@
 	var ReactDOM = __webpack_require__(41);
 
 	var HourlyForecast = function HourlyForecast(hourlyForecast) {
-
-	  console.log(hourlyForecast);
 	  var startingHour = 25 - hourlyForecast.length;
 	  var amorpm = ' am';
 	  if (startingHour > 12) {
