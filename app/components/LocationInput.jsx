@@ -34,7 +34,6 @@ class LocationInput extends React.Component {
   }
   submitLocation(e) {
     e.preventDefault();
-    console.log(this.checkValidInput())
     if(this.checkValidInput()){
       this.props.getLocation(this.state);
     }else{
