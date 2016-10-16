@@ -110,7 +110,7 @@ class App extends React.Component {
           <div className='banner'>
           </div>
           <header>
-            <h1>WeatherMe</h1>
+            <img className='logo' src='/images/weatherMeLogo.svg'/>
             <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
             {invalidInputError}
             <input className='button' type='submit' value='Use Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
