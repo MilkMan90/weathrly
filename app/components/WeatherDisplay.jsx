@@ -18,7 +18,6 @@ class WeatherDisplay extends React.Component {
     this.sliceHourlyArray(hoursRemainingInDay);
   }
   sliceHourlyArray (hoursRemainingInDay){
-    console.log(this.state.dayOneStartingHourlyIndex)
     let tempForecastArray = [];
     tempForecastArray[0] = this.props.weather.hourly_forecast.slice(0, hoursRemainingInDay)
     for( var i = 1; i < 7; i++){
