@@ -25,7 +25,7 @@ class App extends React.Component {
       zip: zip,
       invalidInput: false
     }, () => {
-        getWeatherFromAPI(apiType);
+        this.getWeatherFromAPI(apiType);
       }
     );
   }
@@ -89,7 +89,6 @@ class App extends React.Component {
     }
 
     if(this.state.data !== ''){
-      console.log(this.state.data.response.hasOwnProperty('error'))
       if(this.state.data.response.hasOwnProperty('error')){
         console.log(this.state.data.response.error.description)
          errorMessage = <div>{this.state.data.response.error.description}</div>
