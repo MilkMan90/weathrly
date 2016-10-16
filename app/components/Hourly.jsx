@@ -2,8 +2,6 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 
 const HourlyForecast = (hourlyForecast) => {
-
-  console.log(hourlyForecast)
   let startingHour = 25 - hourlyForecast.length
   let amorpm = ' am';
   if(startingHour > 12){

@@ -29,6 +29,7 @@ class App extends React.Component {
       }
     );
   }
+
   getWeatherFromAPI(apiType){
     let url;
     switch(apiType){
