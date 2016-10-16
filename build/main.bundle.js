@@ -619,7 +619,7 @@
 	  return App;
 	}(React.Component);
 
-	ReactDOM.render(React.createElement(App, { url: 'http://api.wunderground.com/api/881631f063e09bd3/' }), document.getElementById('application'));
+	ReactDOM.render(React.createElement(App, { url: 'https://api.wunderground.com/api/881631f063e09bd3/' }), document.getElementById('application'));
 
 /***/ },
 /* 6 */
