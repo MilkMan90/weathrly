@@ -48,7 +48,7 @@
 
 	__webpack_require__(1);
 	__webpack_require__(5);
-	console.log('testsix');
+	console.log('testEIGHT');
 
 /***/ },
 /* 1 */
