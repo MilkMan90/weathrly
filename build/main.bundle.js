@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/build/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -48,6 +48,7 @@
 
 	__webpack_require__(1);
 	__webpack_require__(5);
+	console.log('testsix');
 
 /***/ },
 /* 1 */
@@ -84,7 +85,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Merriweather);", ""]);
 
 	// module
-	exports.push([module.id, "body {\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n\nh1 {\n  font-weight: 100;\n  color: white;\n  font-family: 'Merriweather', serif;\n  font-size: 35px;\n  text-align: center; }\n\nh3 {\n  font-weight: 100;\n  font-size: 20px;\n  color: #5a5959;\n  text-align: center; }\n\n.UserInputField {\n  margin: 5px;\n  font-size: 15px;\n  height: 30px; }\n\n.button {\n  padding: 20px;\n  border-radius: 2px;\n  outline: none;\n  border: none;\n  background: #05c2d1;\n  color: white;\n  margin: 10px;\n  width: 180px;\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n  .button:hover {\n    background: #03666d;\n    cursor: pointer; }\n\n.submit-button {\n  text-align: center;\n  height: 50px;\n  width: 100px; }\n\n.banner {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  display: block;\n  background-image: url(\"http://img.wallpaperfolder.com/f/79468A1A1332/776502-cool-mountain-range-jpg-snow.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: bottom -200px;\n  width: 100%;\n  height: 300px;\n  -webkit-filter: blur(2px);\n  -moz-filter: blur(2px);\n  -o-filter: blur(2px);\n  -ms-filter: blur(2px);\n  filter: blur(2px); }\n\nheader {\n  color: white;\n  width: 100%;\n  text-align: center;\n  position: fixed;\n  z-index: 999; }\n\nmain {\n  position: relative;\n  padding-top: 300px;\n  width: auto; }\n\n#input-fields {\n  text-align: center; }\n\n.invalid-input {\n  text-align: center;\n  color: #ff3333; }\n\n.ActionButtons {\n  width: 240px;\n  margin: 100px auto 0 auto; }\n\n.show-alert {\n  text-align: center;\n  color: red;\n  font-size: 20px;\n  border: 2px solid red; }\n\n.show-alert:hover {\n  cursor: pointer; }\n\n.alerts {\n  font-size: 12px;\n  color: red; }\n\n.current-weather-header {\n  text-align: left;\n  font-size: 35px;\n  border-bottom: 1px dashed purple;\n  font-weight: bold;\n  color: teal; }\n\n.current-weather {\n  margin: 20px;\n  padding: 5px;\n  border: 2px solid teal;\n  text-align: center; }\n\n.cur-weather {\n  font-size: 20px; }\n\n.cur-temp {\n  font-size: 25px;\n  font-weight: bold;\n  color: maroon; }\n\n.location {\n  text-align: center;\n  margin: 20px; }\n\n.single-day {\n  border: 2px solid teal;\n  margin: 15px; }\n\n.single-day:hover {\n  cursor: pointer; }\n\n.day {\n  padding: 5px;\n  margin: 5px;\n  font-size: 35px;\n  border-bottom: 1px dashed purple;\n  font-weight: bold;\n  color: teal; }\n\n.details {\n  margin: 5px;\n  text-align: center; }\n  .details .daily-image {\n    margin: 5px; }\n  .details .daily-conditions {\n    font-size: 25px; }\n  .details span {\n    margin-left: 10px; }\n\n.all-hours {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  width: 100%;\n  height: auto; }\n\n.each-hour {\n  border: 1px solid teal;\n  width: 120px;\n  padding: 5px;\n  margin: 5px; }\n  .each-hour .hour-label {\n    padding: 10px;\n    text-align: center;\n    border-bottom: 1px teal solid; }\n  .each-hour .hourly-temp {\n    margin-top: 10px;\n    text-align: center;\n    font-size: 25px;\n    font-weight: bold;\n    color: maroon; }\n  .each-hour .hourly-pop {\n    text-align: center;\n    font-size: 13px;\n    color: CornflowerBlue; }\n", ""]);
+	exports.push([module.id, "body {\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n\n.logo {\n  height: 50px;\n  display: inline-block; }\n\nh1 {\n  font-weight: 100;\n  color: white;\n  font-family: 'Merriweather', serif;\n  font-size: 35px;\n  text-align: center; }\n\nh3 {\n  font-weight: 100;\n  font-size: 20px;\n  color: #5a5959;\n  text-align: center; }\n\n.UserInputField {\n  margin: 5px;\n  font-size: 15px;\n  height: 25px; }\n\n.button {\n  border-radius: 2px;\n  outline: none;\n  border: none;\n  background: #05c2d1;\n  color: white;\n  margin: 10px;\n  width: 180px;\n  font-family: helvetica, sans-serif;\n  font-weight: 100;\n  letter-spacing: 2px; }\n  .button:hover {\n    background: #03666d;\n    cursor: pointer; }\n\n.submit-button {\n  text-align: center;\n  height: 30px;\n  width: 100px; }\n\n.banner {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  display: block;\n  background-image: url(\"http://img.wallpaperfolder.com/f/79468A1A1332/776502-cool-mountain-range-jpg-snow.jpg\");\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: bottom -200px;\n  width: 100%;\n  height: 100px;\n  -webkit-filter: blur(1px);\n  -moz-filter: blur(1px);\n  -o-filter: blur(1px);\n  -ms-filter: blur(1px);\n  filter: blur(1px); }\n\nheader {\n  color: white;\n  width: 100%;\n  position: fixed;\n  z-index: 999; }\n\nmain {\n  position: relative;\n  padding-top: 100px;\n  width: auto; }\n\n#input-fields {\n  text-align: center;\n  display: inline-block; }\n  #input-fields #state {\n    width: 50px; }\n\n.invalid-input {\n  text-align: center;\n  color: #ff3333; }\n\n.ActionButtons {\n  width: 240px;\n  margin: 100px auto 0 auto; }\n\n.show-alert {\n  text-align: center;\n  color: red;\n  font-size: 20px;\n  border: 2px solid red; }\n\n.show-alert:hover {\n  cursor: pointer; }\n\n.alerts {\n  font-size: 12px;\n  color: red; }\n\n.current-weather-header {\n  text-align: left;\n  font-size: 35px;\n  border-bottom: 1px dashed purple;\n  font-weight: bold;\n  color: teal; }\n\n.current-weather {\n  margin: 20px;\n  padding: 5px;\n  border: 2px solid teal;\n  text-align: center; }\n\n.cur-weather {\n  font-size: 20px; }\n\n.cur-temp {\n  font-size: 25px;\n  font-weight: bold;\n  color: maroon; }\n\n.location {\n  text-align: center;\n  margin: 20px; }\n\n.single-day {\n  border: 2px solid teal;\n  margin: 15px; }\n\n.single-day:hover {\n  cursor: pointer; }\n\n.day {\n  padding: 5px;\n  margin: 5px;\n  font-size: 35px;\n  border-bottom: 1px dashed purple;\n  font-weight: bold;\n  color: teal; }\n\n.details {\n  margin: 5px;\n  text-align: center; }\n  .details .daily-image {\n    margin: 5px; }\n  .details .daily-conditions {\n    font-size: 25px; }\n  .details span {\n    margin-left: 10px; }\n\n.all-hours {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  width: 100%;\n  height: auto; }\n\n.each-hour {\n  border: 1px solid teal;\n  width: 120px;\n  padding: 5px;\n  margin: 5px; }\n  .each-hour .hour-label {\n    padding: 10px;\n    text-align: center;\n    border-bottom: 1px teal solid; }\n  .each-hour .hourly-temp {\n    margin-top: 10px;\n    text-align: center;\n    font-size: 25px;\n    font-weight: bold;\n    color: maroon; }\n  .each-hour .hourly-pop {\n    text-align: center;\n    font-size: 13px;\n    color: CornflowerBlue; }\n", ""]);
 
 	// exports
 
@@ -453,23 +454,24 @@
 	        zip: zip,
 	        invalidInput: false
 	      }, function () {
-	        switch (apiType) {
-	          case 'ip':
-	            _this2.callipAPI();
-	            break;
-	          case 'zip':
-	            _this2.callZipAPI();
-	            break;
-	          case 'citystate':
-	            _this2.callCityAPI();
-	            break;
-	        }
+	        _this2.getWeatherFromAPI(apiType);
 	      });
 	    }
 	  }, {
-	    key: 'callipAPI',
-	    value: function callipAPI() {
-	      var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json';
+	    key: 'getWeatherFromAPI',
+	    value: function getWeatherFromAPI(apiType) {
+	      var url = void 0;
+	      switch (apiType) {
+	        case 'ip':
+	          url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json';
+	          break;
+	        case 'zip':
+	          url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip + '.json';
+	          break;
+	        case 'citystate':
+	          url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.state + '/' + this.state.city + '.json';
+	          break;
+	      }
 	      $.get(url, function (data) {
 	        var _this3 = this;
 
@@ -477,34 +479,6 @@
 	          data: data
 	        }, function () {
 	          _this3.saveLocation();
-	        });
-	      }.bind(this));
-	    }
-	  }, {
-	    key: 'callZipAPI',
-	    value: function callZipAPI() {
-	      var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip + '.json';
-	      $.get(url, function (data) {
-	        var _this4 = this;
-
-	        this.setState({
-	          data: data
-	        }, function () {
-	          _this4.saveLocation();
-	        });
-	      }.bind(this));
-	    }
-	  }, {
-	    key: 'callCityAPI',
-	    value: function callCityAPI() {
-	      var url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.state + '/' + this.state.city + '.json';
-	      $.get(url, function (data) {
-	        var _this5 = this;
-
-	        this.setState({
-	          data: data
-	        }, function () {
-	          _this5.saveLocation();
 	        });
 	      }.bind(this));
 	    }
@@ -518,15 +492,15 @@
 	  }, {
 	    key: 'saveLocation',
 	    value: function saveLocation() {
-	      var _this6 = this;
+	      var _this4 = this;
 
 	      this.setState({
 	        zip: this.state.data.current_observation.display_location.zip
 	      }, function () {
 	        var storedLocation = {
-	          city: _this6.state.city,
-	          state: _this6.state.state,
-	          zip: _this6.state.zip,
+	          city: _this4.state.city,
+	          state: _this4.state.state,
+	          zip: _this4.state.zip,
 	          apiType: 'zip'
 	        };
 	        localStorage.setItem('savedLocation', JSON.stringify(storedLocation));
@@ -548,7 +522,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this7 = this;
+	      var _this5 = this;
 
 	      var errorExists = void 0;
 	      var errorMessage = void 0;
@@ -567,7 +541,6 @@
 	      }
 
 	      if (this.state.data !== '') {
-	        console.log(this.state.data.response.hasOwnProperty('error'));
 	        if (this.state.data.response.hasOwnProperty('error')) {
 	          console.log(this.state.data.response.error.description);
 	          errorMessage = React.createElement(
@@ -595,15 +568,11 @@
 	        React.createElement(
 	          'header',
 	          null,
-	          React.createElement(
-	            'h1',
-	            null,
-	            'WeatherMe'
-	          ),
+	          React.createElement('img', { className: 'logo', src: '/images/weatherMeLogo.svg' }),
 	          React.createElement(LocationInput, { getLocation: this.setLocation.bind(this), invalidInput: this.invalidInput.bind(this) }),
 	          invalidInputError,
 	          React.createElement('input', { className: 'button', type: 'submit', value: 'Use Current Location', onClick: function onClick() {
-	              return _this7.setLocation({ apiType: 'ip' });
+	              return _this5.setLocation({ apiType: 'ip' });
 	            } })
 	        ),
 	        React.createElement(
@@ -23982,7 +23951,7 @@
 	          ' OR '
 	        ),
 	        React.createElement(UserInputField, { inputFieldId: 'zip', text: 'Zip', value: this.state.zip, handleChange: this.updateState.bind(this) }),
-	        React.createElement('input', { className: SubmitClasses, type: 'submit', onClick: function onClick(e) {
+	        React.createElement('input', { className: SubmitClasses, type: 'submit', value: 'Change Location', onClick: function onClick(e) {
 	            return _this3.submitLocation(e);
 	          } })
 	      );
@@ -24095,9 +24064,8 @@
 	  _createClass(WeatherDisplay, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      //calculate starting hourly inde
-	      var date = new Date();
-	      var currentTimeIndex = date.getHours();
+	      //calculate starting hourly index
+	      var currentTimeIndex = parseInt(this.props.weather.hourly_forecast[0].FCTTIME.hour);
 	      var hoursRemainingInDay = 24 - currentTimeIndex;
 	      this.sliceHourlyArray(hoursRemainingInDay);
 	    }
