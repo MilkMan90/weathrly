@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/build/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -48,6 +48,7 @@
 
 	__webpack_require__(1);
 	__webpack_require__(5);
+	console.log('testsix');
 
 /***/ },
 /* 1 */

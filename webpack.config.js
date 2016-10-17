@@ -12,7 +12,8 @@ module.exports = {
   },
   output: {
     path: PATHS.build,
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
+    publicPath: '/build/'
   },
   module: {
     loaders: [
@@ -22,6 +23,11 @@ module.exports = {
     ]
   },
   plugins: [
+    // new HtmlWebpackPlugin({
+    //   template: PATHS.build + '/index.html',
+    //   title: 'React In Theory',
+    //   inject: 'body'
+    // })
   ],
   resolve: {
     extensions: ['', '.scss', '.css', '.js', '.json', '.jsx']
