@@ -1,15 +1,7 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const classNames = require('classnames')
-const SubmitButton = require('./SubmitButton')
 const UserInputField = require('./UserInputField')
-
-const STATES = [
-  'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI',
-  'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS',
-  'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'ny', 'NC', 'ND', 'OH', 'OK', 'OR',
-  'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
-]
 
 class LocationInput extends React.Component {
   constructor(props) {
@@ -49,14 +41,12 @@ class LocationInput extends React.Component {
 
      if(this.state.zip !== ''){
        let isOnlyNumbers = new RegExp(/^\d+$/)
-       if((this.state.zip.length === 5) &&        isOnlyNumbers.test(this.state.zip)
-        ){
+       if((this.state.zip.length === 5) && isOnlyNumbers.test(this.state.zip)){
           return true
         } else {
           return false
         }
      } else if(this.state.city !== '' && this.state.state !==''){
-
        let isOnlyChar = new RegExp(/^[A-Za-z\s]+$/)
        if(isOnlyChar.test(this.state.city) && isOnlyChar.test(this.state.state)){
          return true
@@ -73,7 +63,7 @@ class LocationInput extends React.Component {
     });
 
     return (
-      <div id='input-fields'>
+      <form id='input-fields'>
         <UserInputField inputFieldId="city" text="City" value={this.state.city}  handleChange={this.updateState.bind(this)}/>
 
         <UserInputField inputFieldId="state" text="State" value={this.state.state} handleChange={this.updateState.bind(this)}/>
@@ -84,7 +74,7 @@ class LocationInput extends React.Component {
 
         <input className={SubmitClasses} type='submit' value='Change Location' onClick={ (e) => this.submitLocation(e)} />
 
-      </div>
+      </form>
     )
   }
 }

@@ -1,11 +1,10 @@
 require('jquery')
 const React = require('react')
 const ReactDOM = require('react-dom')
-const LikesCounter = require('./LikesCounter')
-const SubmitButton = require('./SubmitButton')
 const UserInputField = require('./UserInputField')
 const LocationInput = require('./LocationInput')
 const WeatherDisplay = require('./WeatherDisplay')
+const $ = require('jquery')
 
 class App extends React.Component {
   constructor(props) {
@@ -45,7 +44,9 @@ class App extends React.Component {
     $.get(url, function(data) {
       this.setState({
         data:data,
-      },() =>{this.saveLocation()})
+      },() => {
+        this.saveLocation()
+      })
     }.bind(this));
   }
   invalidInput() {
@@ -54,17 +55,19 @@ class App extends React.Component {
     })
   }
   saveLocation () {
-    this.setState({
-      zip: this.state.data.current_observation.display_location.zip
-    }, ()=>{
-      var storedLocation = {
-        city: this.state.city,
-        state: this.state.state,
-        zip: this.state.zip,
-        apiType: 'zip'
-      }
-      localStorage.setItem('savedLocation', JSON.stringify(storedLocation))
-    })
+    if(!this.state.invalidInput){
+      this.setState({
+        zip: this.state.data.current_observation.display_location.zip
+      }, ()=>{
+        var storedLocation = {
+          city: this.state.city,
+          state: this.state.state,
+          zip: this.state.zip,
+          apiType: 'zip'
+        }
+        localStorage.setItem('savedLocation', JSON.stringify(storedLocation))
+      })
+    }
   }
   retrieveLocation () {
     return JSON.parse(localStorage.getItem('savedLocation'))
@@ -73,6 +76,8 @@ class App extends React.Component {
     let retrievedLocation = this.retrieveLocation();
     if(retrievedLocation!= null){
       this.setLocation(retrievedLocation)
+    } else {
+      this.getWeatherFromAPI('ip');
     }
   }
   render () {
@@ -83,7 +88,7 @@ class App extends React.Component {
     let weatherStyle;
 
     if (this.state.invalidInput === true) {
-      invalidInputError = (<div className = 'invalid-input'>Please Enter a Valid Zip-code</div>)
+      invalidInputError = (<div className = 'invalid-input'>Please Enter a Valid City-State or Zip Code</div>)
     } else {
       invalidInputError = ''
     }
@@ -113,7 +118,7 @@ class App extends React.Component {
             <img className='logo' src='/images/weatherMeLogo.svg'/>
             <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
             {invalidInputError}
-            <input className='button' type='submit' value='Use Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
+            <input className='button' id='use-current' type='submit' value='Use Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
           </header>
           <main>
           {errorMessage}
@@ -125,3 +130,5 @@ class App extends React.Component {
 }
 
 ReactDOM.render( <App url='https://api.wunderground.com/api/881631f063e09bd3/'/>, document.getElementById('application'))
+
+module.exports = App
