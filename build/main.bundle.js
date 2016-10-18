@@ -48,7 +48,6 @@
 
 	__webpack_require__(1);
 	__webpack_require__(5);
-	console.log('testEIGHT');
 
 /***/ },
 /* 1 */
@@ -419,6 +418,7 @@
 	var UserInputField = __webpack_require__(182);
 	var LocationInput = __webpack_require__(183);
 	var WeatherDisplay = __webpack_require__(186);
+	$ = __webpack_require__(6);
 
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);

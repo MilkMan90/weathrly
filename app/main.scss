@@ -1,9 +1,8 @@
 $main-background: #cec2c2;
-$button-background: #05c2d1;
+$button-background: #019DAA;
 $faded-background: rgba(255,255,255,0.4);
 
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
-
 
 @mixin light-font {
   font-family: helvetica, sans-serif;
@@ -19,21 +18,13 @@ $faded-background: rgba(255,255,255,0.4);
 }
 
 body {
-  // background: $main-background;
   @include light-font;
 }
 
 .logo{
     height: 50px;
     display: inline-block;
-}
-
-h1 {
-    font-weight: 100;
-    color: white;
-    font-family: 'Merriweather', serif;
-    font-size: 35px;
-    text-align: center;
+    margin-left: 35px;
 }
 
 h3 {
@@ -44,19 +35,21 @@ h3 {
 }
 
 .UserInputField{
-  margin: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
   font-size: 15px;
   height: 25px;
 }
 
 .button {
+  font-size: 15px;
     border-radius: 2px;
     outline: none;
     border: none;
     background: $button-background;
     color: white;
-    margin: 10px;
-    width: 180px;
+    width: 200px;
+    height: 30px;
 
     @include light-font;
     &:hover {
@@ -65,10 +58,14 @@ h3 {
     }
 }
 
+#use-current{
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
 .submit-button{
   text-align: center;
   height: 30px;
-  width: 100px;
 }
 
 .banner {
@@ -78,8 +75,9 @@ h3 {
   right: 0;
   z-index: 1;
 
-  display: block;
-  // background-image: url('/images/snowy.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-image: url('http://img.wallpaperfolder.com/f/79468A1A1332/776502-cool-mountain-range-jpg-snow.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -96,8 +94,10 @@ h3 {
 
 header{
   color: white;
+  display: flex;
   width: 100%;
   position: fixed;
+  margin-top: 18px;
   z-index: 999;
 }
 
@@ -107,11 +107,20 @@ main{
   width: auto;
 }
 
+input{
+
+}
+
 #input-fields{
+  padding-top: 10px;
   text-align: center;
-  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
   #state{
     width: 50px;
+  }
+  #zip{
+    width: 75px;
   }
 }
 
@@ -140,12 +149,14 @@ main{
   font-size: 12px;
   color: red;
 }
+
 .current-weather-header{
   text-align: left;
   @include headerFonts;
 }
+
 .current-weather{
-  margin: 20px;
+  margin: 30px;
   padding: 5px;
   border: 2px solid teal;
   text-align: center;
@@ -154,6 +165,7 @@ main{
   font-size: 20px;
 }
 .cur-temp{
+  margin: 5px;
   font-size: 25px;
   font-weight: bold;
   color: complement(teal);
@@ -164,7 +176,7 @@ main{
 }
 .single-day{
   border: 2px solid teal;
-  margin: 15px;
+  margin: 30px;
 }
 
 .single-day:hover{
@@ -188,6 +200,9 @@ main{
   }
   span{
     margin-left: 10px;
+  }
+  p{
+    margin: 10px;
   }
 }
 
@@ -220,4 +235,20 @@ main{
     font-size: 13px;
     color: CornflowerBlue;
   }
+}
+
+@media screen and (max-width: 1000px) {
+  main{
+    padding-top: 150px;
+  }
+  .banner{
+    height: 150px;
+  }
+  header{
+    height: 150px;
+  }
+  .submit-button{
+    margin-top: 10px;
+  }
+
 }

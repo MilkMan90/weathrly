@@ -23,11 +23,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: PATHS.build + '/index.html',
-    //   title: 'React In Theory',
-    //   inject: 'body'
-    // })
   ],
   resolve: {
     extensions: ['', '.scss', '.css', '.js', '.json', '.jsx']

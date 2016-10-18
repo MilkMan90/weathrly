@@ -10,7 +10,6 @@ class SingleDay extends React.Component {
     };
   }
   showHourly(){
-
   if(this.state.showHourly === false) {
     this.setState({
       showHourly: true
@@ -25,8 +24,7 @@ class SingleDay extends React.Component {
   render() {
     let hourlyForecast;
 
-
-    if(this.state.showHourly === true){
+    if (this.state.showHourly === true) {
       hourlyForecast = Hourly(this.props.hourlyArray)
     } else {
       hourlyForecast ='';
