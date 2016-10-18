@@ -4,7 +4,7 @@ const SingleDay = require('./SingleDay')
 
 class WeatherDisplay extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       hourlyForecastArray: [''],
       showAlert: false
@@ -14,7 +14,7 @@ class WeatherDisplay extends React.Component {
     //calculate starting hourly index
     let currentTimeIndex = parseInt(this.props.weather.hourly_forecast[0].FCTTIME.hour)
     let hoursRemainingInDay = (24 - currentTimeIndex)
-    this.sliceHourlyArray(hoursRemainingInDay);
+    this.sliceHourlyArray(hoursRemainingInDay)
   }
   sliceHourlyArray (hoursRemainingInDay){
     let tempForecastArray = [];
@@ -39,8 +39,8 @@ class WeatherDisplay extends React.Component {
     }
   }
   render() {
-    let alert;
-
+    let alert
+    let singleDayArray = [];
     if(this.props.weather.alerts.length > 0){
       if(this.state.showAlert === true){
         alert = (<div className='alerts'>{this.props.weather.alerts[0].message}</div>)
@@ -48,9 +48,6 @@ class WeatherDisplay extends React.Component {
         alert = (<div className='show-alert'>Click to Show Alert</div>)
       }
     }
-
-    let singleDayArray = [];
-
     for (var i = 0; i < 7; i++){
       var weekday = ''
       if(i === 0){
@@ -64,7 +61,6 @@ class WeatherDisplay extends React.Component {
         <SingleDay day={weekday} key={i} dailyForecast={this.props.weather.forecast.simpleforecast.forecastday[i]} hourlyArray={this.state.hourlyForecastArray[i]}/>
       )
     }
-
     return (
       <div id='weather-box'>
         <div className='location'>
@@ -85,8 +81,6 @@ class WeatherDisplay extends React.Component {
       </div>
     )
   }
-
 }
-
 
 module.exports = WeatherDisplay

@@ -4,10 +4,10 @@ const Hourly = require('./Hourly')
 
 class SingleDay extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       showHourly: false
-    };
+    }
   }
   showHourly(){
   if(this.state.showHourly === false) {
@@ -22,14 +22,12 @@ class SingleDay extends React.Component {
     }
   }
   render() {
-    let hourlyForecast;
-
+    let hourlyForecast
     if (this.state.showHourly === true) {
       hourlyForecast = Hourly(this.props.hourlyArray)
     } else {
-      hourlyForecast ='';
+      hourlyForecast =''
     }
-
     return (
       <div className='single-day' onClick={this.showHourly.bind(this)}>
         <div className='day'>
