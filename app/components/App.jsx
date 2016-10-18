@@ -96,20 +96,18 @@ class App extends React.Component {
     if(this.state.data !== ''){
       if(this.state.data.response.hasOwnProperty('error')){
         console.log(this.state.data.response.error.description)
-         errorMessage = <div>{this.state.data.response.error.description}</div>
+        errorMessage = <div>{this.state.data.response.error.description}</div>
         errorExists = true;
         } else {
           errorMessage=''
           errorExists = false;
         }
     }
-
      if (this.state.data && errorExists===false){
       weatherDisplay = (<WeatherDisplay className='weather' weather={this.state.data}/>)
     } else {
       weatherDisplay = '';
     }
-
     return (
       <div className='app'>
           <div className='banner'>
