@@ -11,7 +11,6 @@ class WeatherDisplay extends React.Component {
     };
   }
   componentWillMount () {
-    //calculate starting hourly index
     let currentTimeIndex = parseInt(this.props.weather.hourly_forecast[0].FCTTIME.hour)
     let hoursRemainingInDay = (24 - currentTimeIndex)
     this.sliceHourlyArray(hoursRemainingInDay)
@@ -19,23 +18,17 @@ class WeatherDisplay extends React.Component {
   sliceHourlyArray (hoursRemainingInDay){
     let tempForecastArray = [];
     tempForecastArray[0] = this.props.weather.hourly_forecast.slice(0, hoursRemainingInDay)
-    for( var i = 1; i < 7; i++){
+    for (var i = 1; i < 7; i++){
       let temp = this.props.weather.hourly_forecast.slice(((i-1)*24)+hoursRemainingInDay, (i*24)+hoursRemainingInDay)
       tempForecastArray.push(temp)
     }
-    this.setState({
-      hourlyForecastArray: tempForecastArray
-    })
+    this.setState({hourlyForecastArray: tempForecastArray})
   }
   showAlert(){
-    if(this.state.showAlert === false){
-      this.setState({
-        showAlert: true
-      })
+    if (this.state.showAlert === false){
+      this.setState({showAlert: true})
     } else {
-      this.setState({
-        showAlert: false
-      })
+      this.setState({showAlert: false})
     }
   }
   render() {
@@ -48,11 +41,11 @@ class WeatherDisplay extends React.Component {
         alert = (<div className='show-alert'>Click to Show Alert</div>)
       }
     }
-    for (var i = 0; i < 7; i++){
+    for (var i = 0; i < 7; i++) {
       var weekday = ''
-      if(i === 0){
+      if (i === 0) {
         weekday = 'Today'
-      } else if(i === 1){
+      } else if (i === 1) {
         weekday = 'Tomorrow'
       } else {
         weekday = this.props.weather.forecast.simpleforecast.forecastday[i].date.weekday
@@ -63,20 +56,20 @@ class WeatherDisplay extends React.Component {
     }
     return (
       <div id='weather-box'>
-        <div className='location'>
+        <div className = 'location'>
           <strong>Location:</strong> {this.props.weather.current_observation.display_location.full}
         </div>
-        <div className='alerts' onClick={this.showAlert.bind(this)}>
+        <div className = 'alerts' onClick = {this.showAlert.bind(this)}>
           {alert}
         </div>
-        <div className='current-weather'>
+        <div className = 'current-weather'>
           <div className = 'current-weather-header'>Now</div>
-            <img className='daily-image' src={this.props.weather.current_observation.icon_url} alt={this.props.weather.current_observation.icon}></img>
+            <img className = 'daily-image' src = {this.props.weather.current_observation.icon_url} alt = {this.props.weather.current_observation.icon}></img>
           <p className = 'cur-weather'>
           {this.props.weather.current_observation.weather}</p>
           <p className = 'cur-temp'>{this.props.weather.current_observation.temp_f}&deg; </p>
         </div>
-        <p className='location'>Click on any day for hourly temps</p>
+        <p className = 'location'>Click on any day for hourly temps</p>
         {singleDayArray}
       </div>
     )
