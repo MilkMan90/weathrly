@@ -5,7 +5,7 @@ const UserInputField = require('./UserInputField')
 
 class LocationInput extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       city: '',
       state: '',
@@ -14,9 +14,9 @@ class LocationInput extends React.Component {
     };
   }
   updateState(e) {
-    let {placeholder, value} = e.target;
-    placeholder = placeholder.toLowerCase();
-    value = value.toLowerCase();
+    let {placeholder, value} = e.target
+    placeholder = placeholder.toLowerCase()
+    value = value.toLowerCase()
     this.setState({[placeholder]: value},()=>{
       if(this.state.city !== '' || this.state.state !== ''){
         this.setState({zip:'', apiType: 'citystate'})
@@ -25,11 +25,11 @@ class LocationInput extends React.Component {
       }});
   }
   submitLocation(e) {
-    e.preventDefault();
+    e.preventDefault()
     if(this.checkValidInput()){
-      this.props.getLocation(this.state);
+      this.props.getLocation(this.state)
     }else{
-      this.props.invalidInput();
+      this.props.invalidInput()
     };
     this.setState({//clear input fields
       city: '',
@@ -38,7 +38,6 @@ class LocationInput extends React.Component {
     })
   }
   checkValidInput() {
-
      if(this.state.zip !== ''){
        let isOnlyNumbers = new RegExp(/^\d+$/)
        if((this.state.zip.length === 5) && isOnlyNumbers.test(this.state.zip)){
@@ -55,25 +54,18 @@ class LocationInput extends React.Component {
        }
      }
   }
-
   render() {
     var SubmitClasses = classNames({
       'button': true,
       'submit-button': true
     });
-
     return (
       <form id='input-fields'>
         <UserInputField inputFieldId="city" text="City" value={this.state.city}  handleChange={this.updateState.bind(this)}/>
-
         <UserInputField inputFieldId="state" text="State" value={this.state.state} handleChange={this.updateState.bind(this)}/>
-
         <span> OR </span>
-
         <UserInputField inputFieldId="zip" text="Zip" value={this.state.zip} handleChange={this.updateState.bind(this)}/>
-
         <input className={SubmitClasses} type='submit' value='Change Location' onClick={ (e) => this.submitLocation(e)} />
-
       </form>
     )
   }

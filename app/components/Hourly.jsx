@@ -3,12 +3,11 @@ const ReactDOM = require('react-dom')
 
 const HourlyForecast = (hourlyForecast) => {
   let startingHour = 25 - hourlyForecast.length
-  let amorpm = ' am';
+  let amorpm = ' am'
   if(startingHour > 12){
-    startingHour = startingHour - 12;
-    amorpm = ' pm';
+    startingHour = startingHour - 12
+    amorpm = ' pm'
   }
-
   var hours = []
   hourlyForecast.forEach(function(hour){
     hours.push(PerHour(hour))
@@ -19,7 +18,6 @@ const HourlyForecast = (hourlyForecast) => {
     </div>
   )
 }
-
 const PerHour = (hour) =>{
   return(
     <span key={hour.FCTTIME.hour} className = 'each-hour'>

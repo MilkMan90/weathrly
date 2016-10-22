@@ -8,7 +8,7 @@ const $ = require('jquery')
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       city: '',
       state: '',
@@ -24,22 +24,22 @@ class App extends React.Component {
       zip: zip,
       invalidInput: false
     }, () => {
-        this.getWeatherFromAPI(apiType);
+        this.getWeatherFromAPI(apiType)
       }
     );
   }
   getWeatherFromAPI(apiType){
-    let url;
+    let url
     switch(apiType){
       case 'ip':
         url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/autoip.json'
-        break;
+        break
       case 'zip':
         url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/' + this.state.zip +'.json'
-        break;
+        break
       case 'citystate':
         url = this.props.url + 'alerts/conditions/forecast10day/hourly10day/q/'+this.state.state+'/'+this.state.city+'.json'
-        break;
+        break
     }
     $.get(url, function(data) {
       this.setState({
@@ -47,7 +47,7 @@ class App extends React.Component {
       },() => {
         this.saveLocation()
       })
-    }.bind(this));
+    }.bind(this))
   }
   invalidInput() {
     this.setState({
@@ -73,19 +73,19 @@ class App extends React.Component {
     return JSON.parse(localStorage.getItem('savedLocation'))
   }
   componentDidMount () {
-    let retrievedLocation = this.retrieveLocation();
+    let retrievedLocation = this.retrieveLocation()
     if(retrievedLocation!= null){
       this.setLocation(retrievedLocation)
     } else {
-      this.getWeatherFromAPI('ip');
+      this.getWeatherFromAPI('ip')
     }
   }
   render () {
-    let errorExists;
-    let errorMessage;
-    let invalidInputError;
-    let weatherDisplay;
-    let weatherStyle;
+    let errorExists
+    let errorMessage
+    let invalidInputError
+    let weatherDisplay
+    let weatherStyle
 
     if (this.state.invalidInput === true) {
       invalidInputError = (<div className = 'invalid-input'>Please Enter a Valid City-State or Zip Code</div>)
@@ -96,20 +96,18 @@ class App extends React.Component {
     if(this.state.data !== ''){
       if(this.state.data.response.hasOwnProperty('error')){
         console.log(this.state.data.response.error.description)
-         errorMessage = <div>{this.state.data.response.error.description}</div>
-        errorExists = true;
+        errorMessage = <div>{this.state.data.response.error.description}</div>
+        errorExists = true
         } else {
           errorMessage=''
-          errorExists = false;
+          errorExists = false
         }
     }
-
      if (this.state.data && errorExists===false){
       weatherDisplay = (<WeatherDisplay className='weather' weather={this.state.data}/>)
     } else {
-      weatherDisplay = '';
+      weatherDisplay = ''
     }
-
     return (
       <div className='app'>
           <div className='banner'>
