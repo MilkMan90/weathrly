@@ -608,7 +608,7 @@
 	        React.createElement(
 	          'header',
 	          null,
-	          React.createElement('img', { className: 'logo', src: '/images/weatherMeLogo.svg' }),
+	          React.createElement('img', { className: 'logo', src: '../images/weatherMeLogo.svg' }),
 	          React.createElement(LocationInput, { getLocation: this.setLocation.bind(this), invalidInput: this.invalidInput.bind(this) }),
 	          invalidInputError,
 	          React.createElement('input', { className: 'button', id: 'use-current', type: 'submit', value: 'Use Current Location', onClick: function onClick() {
