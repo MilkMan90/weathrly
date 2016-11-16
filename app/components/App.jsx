@@ -14,6 +14,7 @@ class App extends React.Component {
       state: '',
       zip: '',
       data: '',
+      tempDataUponError: '',
       invalidInput: false
     };
   }
@@ -50,9 +51,7 @@ class App extends React.Component {
     }.bind(this))
   }
   invalidInput() {
-    this.setState({
-      invalidInput: true
-    })
+    this.setState({invalidInput: true})
   }
   saveLocation () {
     if(!this.state.invalidInput){
@@ -95,7 +94,6 @@ class App extends React.Component {
 
     if(this.state.data !== ''){
       if(this.state.data.response.hasOwnProperty('error')){
-        console.log(this.state.data.response.error.description)
         errorMessage = <div>{this.state.data.response.error.description}</div>
         errorExists = true
         } else {
@@ -103,11 +101,12 @@ class App extends React.Component {
           errorExists = false
         }
     }
-     if (this.state.data && errorExists===false){
+     if (this.state.data && errorExists === false){
       weatherDisplay = (<WeatherDisplay className='weather' weather={this.state.data}/>)
-    } else {
-      weatherDisplay = ''
+    } else if(this.state.tempDataUponError && errorExists === true) {
+      weatherDisplay = (<WeatherDisplay className='weather' weather={this.state.tempDataUponError}/>)
     }
+    console.log(this.state.data);
     return (
       <div className='app'>
           <div className='banner'>
