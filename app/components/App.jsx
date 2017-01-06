@@ -6,7 +6,7 @@ const LocationInput = require('./LocationInput')
 const WeatherDisplay = require('./WeatherDisplay')
 const $ = require('jquery')
 
-import weatherMeLogo from './images/weatherMeLogo.svg'
+import weatherMeLogo from '../images/weatherMeLogo.svg'
 
 class App extends React.Component {
   constructor(props) {
@@ -120,8 +120,8 @@ class App extends React.Component {
             <input className='button' id='use-current' type='submit' value='Use Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
           </header>
           <main>
-          {errorMessage}
-          {weatherDisplay}
+            {errorMessage}
+            {weatherDisplay}
           </main>
       </div>
     )
