@@ -6,6 +6,8 @@ const LocationInput = require('./LocationInput')
 const WeatherDisplay = require('./WeatherDisplay')
 const $ = require('jquery')
 
+import weatherMeLogo from './images/weatherMeLogo.svg'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -112,7 +114,7 @@ class App extends React.Component {
           <div className='banner'>
           </div>
           <header>
-            <img className='logo' src='./images/weatherMeLogo.svg'/>
+            <img className='logo' src={weatherMeLogo}/>
             <LocationInput getLocation={this.setLocation.bind(this)} invalidInput={this.invalidInput.bind(this)}/>
             {invalidInputError}
             <input className='button' id='use-current' type='submit' value='Use Current Location' onClick={()=>this.setLocation({apiType:'ip'})}/>
